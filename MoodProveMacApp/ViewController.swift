@@ -21,17 +21,24 @@ class ViewController: NSViewController, ChartViewDelegate {
         let entry2 = BarChartDataEntry(x: 4.0, y: 1.0)
         let entry3 = BarChartDataEntry(x: 5.0, y: 5.0)
         
-        let dataSet = BarChartDataSet(values: [entry1, entry2, entry3], label: "Widgets Type")
+        let dataSet = BarChartDataSet(values: [entry1, entry2, entry3], label: "")
         let data = BarChartData(dataSets: [dataSet])
         moodDataChart.data = data
-        
-        moodDataChart.chartDescription?.text = "Number of Widgets by Type"
+    
+        moodDataChart.highlightPerTapEnabled = true
+        moodDataChart.drawGridBackgroundEnabled = false
+        moodDataChart.xAxis.drawGridLinesEnabled = false
+        moodDataChart.leftAxis.drawGridLinesEnabled = false
         
         
         // Disabling zoom
         moodDataChart.pinchZoomEnabled = false
         moodDataChart.dragEnabled = false
         moodDataChart.setScaleEnabled(false)
+        
+        //moodDataChart.animate(xAxisDuration: 5000, yAxisDuration: 5000)
+        moodDataChart.backgroundColor = NSColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1)
+        moodDataChart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
         
         moodDataChart.delegate = self
     }
@@ -43,7 +50,7 @@ class ViewController: NSViewController, ChartViewDelegate {
     }
     
    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        print("happy")
+        
     }
 
 
