@@ -9,7 +9,7 @@
 import Cocoa
 import Charts
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, ChartViewDelegate {
     
     @IBOutlet weak var moodDataChart: BarChartView!
     
@@ -26,12 +26,24 @@ class ViewController: NSViewController {
         moodDataChart.data = data
         
         moodDataChart.chartDescription?.text = "Number of Widgets by Type"
+        
+        
+        // Disabling zoom
+        moodDataChart.pinchZoomEnabled = false
+        moodDataChart.dragEnabled = false
+        moodDataChart.setScaleEnabled(false)
+        
+        moodDataChart.delegate = self
     }
 
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }
+    }
+    
+   func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        print("happy")
     }
 
 
