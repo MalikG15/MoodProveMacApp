@@ -2,4 +2,6 @@ MooodProveMacApp.xcworkspace/
 Podfile
 Podfile.lock
 Pods/
-MoodProveMacApp.xcodeproj
+MoodProveMacApp.xcodeproj/
+.gitignore.swp
+MoodProveMacApp.xcworkspace/contents.xcworkspacedata
