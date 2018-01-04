@@ -39,9 +39,10 @@ class ViewController: NSViewController, ChartViewDelegate {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .none
-        formatter.dateFormat = "MM - dd - yyyy"
+        formatter.dateFormat = "EEEE (MM/dd/yyyy)"
         formatter.locale = Locale.current
         
+        // Set up xValuesFormatter for the chart
         let xValuesNumberFormatter = ChartXAxisValueFormatter(referenceTimeInterval: earlistTimeInRetrievedEntries, dateFormatter: formatter)
         
         let xAxis = moodDataChart.xAxis
@@ -49,22 +50,32 @@ class ViewController: NSViewController, ChartViewDelegate {
         xAxis.granularity = 1
         xAxis.valueFormatter = xValuesNumberFormatter
         
-
         
-        let barChartDataSet = BarChartDataSet(values: retreivedDataEntries, label: "")
+        let barChartDataSet = BarChartDataSet(values: retreivedDataEntries, label: nil)
+        barChartDataSet.colors = [NSUIColor.magenta]
         let data = BarChartData(dataSets: [barChartDataSet])
         moodDataChart.data = data
         
         
         moodDataChart.highlightPerTapEnabled = true
         moodDataChart.drawGridBackgroundEnabled = false
-        moodDataChart.xAxis.drawGridLinesEnabled = false
-        moodDataChart.leftAxis.drawGridLinesEnabled = false
-        
+        // moodDataChart.xAxis.drawGridLinesEnabled = false
+        // moodDataChart.leftAxis.drawGridLinesEnabled = false
+        // moodDataChart.leftAxis.gridColor = NSUIColor.blue
         // Disabling zoom
         moodDataChart.pinchZoomEnabled = false
         moodDataChart.dragEnabled = false
         moodDataChart.setScaleEnabled(false)
+        
+        let limitLines: [Double] = [1, 2, 3]
+        for k:Int in 0 ..< limitLines.count {
+            let limitLine = ChartLimitLine()
+            limitLine.lineColor = NSUIColor.red
+            limitLine.limit = limitLines[k]
+            limitLine.lineWidth = 2.0
+            moodDataChart.leftAxis.addLimitLine(limitLine)
+            
+        }
         
         //moodDataChart.animate(xAxisDuration: 5000, yAxisDuration: 5000)
         moodDataChart.backgroundColor = NSColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1)
@@ -78,10 +89,10 @@ class ViewController: NSViewController, ChartViewDelegate {
         
         
         // Mock Data
-        let date_1: Date = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-        let date_2: Date = Calendar.current.date(byAdding: .day, value: 0, to: Date())!
-        let date_3: Date = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
-        let date_4: Date = Calendar.current.date(byAdding: .day, value: -2, to: Date())!
+        let date_1: Date = Calendar.current.date(byAdding: .day, value: 3, to: Date())!
+        let date_2: Date = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
+        let date_3: Date = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+        let date_4: Date = Calendar.current.date(byAdding: .day, value: 0, to: Date())!
         
         let num_data_1: TimeInterval = date_1.timeIntervalSince1970
         let num_data_2: TimeInterval = date_2.timeIntervalSince1970
