@@ -691,11 +691,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="562" height="363"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gv6-JB-f1n" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="36" y="54" width="481" height="270"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gv6-JB-f1n" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="41" y="54" width="481" height="270"/>
                             </customView>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="gv6-JB-f1n" secondAttribute="bottom" constant="54" id="BUg-rP-7WU"/>
+                            <constraint firstAttribute="trailing" secondItem="gv6-JB-f1n" secondAttribute="trailing" constant="45" id="Z1r-5C-c3G"/>
+                            <constraint firstItem="gv6-JB-f1n" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="36" id="gZm-ma-wNm"/>
+                            <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="39" id="zTj-NS-QJs"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="moodDataChart" destination="gv6-JB-f1n" id="loR-hZ-vYL"/>
@@ -703,7 +708,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="931"/>
+            <point key="canvasLocation" x="75" y="930.5"/>
         </scene>
     </scenes>
 </document>
