@@ -667,9 +667,9 @@
                     <window key="window" title="MoodProve" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="158" y="240" width="526" height="397"/>
+                        <rect key="contentRect" x="556" y="319" width="526" height="397"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minFullScreenContentSize" type="size" width="526" height="397"/>
+                        <value key="minSize" type="size" width="526" height="327"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="7JF-NJ-9jn"/>
                         </connections>
@@ -691,8 +691,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="562" height="363"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gv6-JB-f1n" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="41" y="54" width="481" height="270"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="gv6-JB-f1n" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="36" y="54" width="481" height="270"/>
                             </customView>
                         </subviews>
                         <constraints>

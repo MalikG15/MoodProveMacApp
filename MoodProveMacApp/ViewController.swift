@@ -13,23 +13,53 @@ class ViewController: NSViewController, ChartViewDelegate {
     
     @IBOutlet weak var moodDataChart: BarChartView!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let entry1 = BarChartDataEntry(x: 1.0, y: 2.0)
-        let entry2 = BarChartDataEntry(x: 4.0, y: 1.0)
-        let entry3 = BarChartDataEntry(x: 5.0, y: 5.0)
-        
-        let dataSet = BarChartDataSet(values: [entry1, entry2, entry3], label: "")
-        let data = BarChartData(dataSets: [dataSet])
-        moodDataChart.data = data
+        // Getting the current date to create a
+        let date = Date()
+        retrieveBarChartData(currentDate: date.timeIntervalSinceNow)
+    }
+
+    override var representedObject: Any? {
+        didSet {
+        // Update the view, if already loaded.
+        }
+    }
     
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        
+    }
+    
+    func setUpBarChart(retreivedDataEntries: [ChartDataEntry], earlistTimeInRetrievedEntries: TimeInterval) {
+        
+        // Set up Date Formatter
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
+        formatter.dateFormat = "MM - dd - yyyy"
+        formatter.locale = Locale.current
+        
+        let xValuesNumberFormatter = ChartXAxisValueFormatter(referenceTimeInterval: earlistTimeInRetrievedEntries, dateFormatter: formatter)
+        
+        let xAxis = moodDataChart.xAxis
+        xAxis.granularityEnabled = true
+        xAxis.granularity = 1
+        xAxis.valueFormatter = xValuesNumberFormatter
+        
+
+        
+        let barChartDataSet = BarChartDataSet(values: retreivedDataEntries, label: "")
+        let data = BarChartData(dataSets: [barChartDataSet])
+        moodDataChart.data = data
+        
+        
         moodDataChart.highlightPerTapEnabled = true
         moodDataChart.drawGridBackgroundEnabled = false
         moodDataChart.xAxis.drawGridLinesEnabled = false
         moodDataChart.leftAxis.drawGridLinesEnabled = false
-        
         
         // Disabling zoom
         moodDataChart.pinchZoomEnabled = false
@@ -42,17 +72,33 @@ class ViewController: NSViewController, ChartViewDelegate {
         
         moodDataChart.delegate = self
     }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
     
-   func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+    func retrieveBarChartData(currentDate: Double) {
+        var dataEntries: [ChartDataEntry] = []
         
+        
+        // Mock Data
+        let date_1: Date = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+        let date_2: Date = Calendar.current.date(byAdding: .day, value: 0, to: Date())!
+        let date_3: Date = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
+        let date_4: Date = Calendar.current.date(byAdding: .day, value: -2, to: Date())!
+        
+        let num_data_1: TimeInterval = date_1.timeIntervalSince1970
+        let num_data_2: TimeInterval = date_2.timeIntervalSince1970
+        let num_data_3: TimeInterval = date_3.timeIntervalSince1970
+        let num_data_4: TimeInterval = date_4.timeIntervalSince1970
+    
+        
+        dataEntries.append(BarChartDataEntry(x: (num_data_4 - num_data_4) / (3600 * 24), y: 2.0))
+        dataEntries.append(BarChartDataEntry(x: (num_data_3 - num_data_4) / (3600 * 24), y: 3.0))
+        dataEntries.append(BarChartDataEntry(x: (num_data_2 - num_data_4) / (3600 * 24), y: 2.0))
+        dataEntries.append(BarChartDataEntry(x: (num_data_1 - num_data_4) / (3600 * 24), y: 1.0))
+        
+        setUpBarChart(retreivedDataEntries: dataEntries, earlistTimeInRetrievedEntries: num_data_4)
     }
 
+    
 
 }
+
 
