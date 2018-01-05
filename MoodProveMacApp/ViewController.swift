@@ -39,7 +39,7 @@ class ViewController: NSViewController, ChartViewDelegate {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .none
-        formatter.dateFormat = "EEEE (MM/dd/yyyy)"
+        formatter.dateFormat = "MMM dd, yyyy"
         formatter.locale = Locale.current
         
         // Set up xValuesFormatter for the chart
@@ -57,21 +57,41 @@ class ViewController: NSViewController, ChartViewDelegate {
         moodDataChart.data = data
         
         
+        moodDataChart.leftAxis.axisMinimum = 0
+        moodDataChart.leftAxis.axisMaximum = 61
+        
+        // Allow users to see a bar cell highlighted when tapped.
         moodDataChart.highlightPerTapEnabled = true
-        moodDataChart.drawGridBackgroundEnabled = false
-        // moodDataChart.xAxis.drawGridLinesEnabled = false
-        // moodDataChart.leftAxis.drawGridLinesEnabled = false
-        // moodDataChart.leftAxis.gridColor = NSUIColor.blue
+        //moodDataChart.drawGridBackgroundEnabled = true
+        
+        // Remove labels from both left and right axis.
+        moodDataChart.leftAxis.drawLabelsEnabled = false
+        moodDataChart.rightAxis.drawLabelsEnabled = false
+        
+        // Remove all the premade grid lines from the bar chart.
+        moodDataChart.xAxis.drawGridLinesEnabled = false
+        moodDataChart.leftAxis.drawGridLinesEnabled = false
+        moodDataChart.rightAxis.drawGridLinesEnabled = false
+
+        // Set the xAxis font
+        moodDataChart.xAxis.labelFont = NSFont.messageFont(ofSize: CGFloat.init(15))
+        
+        // Remove description label
+        moodDataChart.chartDescription?.text = ""
+        
         // Disabling zoom
         moodDataChart.pinchZoomEnabled = false
         moodDataChart.dragEnabled = false
         moodDataChart.setScaleEnabled(false)
         
-        let limitLines: [Double] = [1, 2, 3]
-        for k:Int in 0 ..< limitLines.count {
+        let limitLinesValues: [Double] = [0, 10, 20, 30, 40, 50, 60]
+        let limitLinesColors: [NSUIColor] = [NSUIColor.black, NSUIColor.brown, NSUIColor.blue, NSUIColor.cyan, NSUIColor.yellow,
+                                             NSUIColor.green, NSUIColor.purple]
+        for k:Int in 0 ..< limitLinesValues.count {
             let limitLine = ChartLimitLine()
-            limitLine.lineColor = NSUIColor.red
-            limitLine.limit = limitLines[k]
+            limitLine.lineColor = limitLinesColors[k]
+            limitLine.limit = limitLinesValues[k]
+            limitLine.label = "Mood"
             limitLine.lineWidth = 2.0
             moodDataChart.leftAxis.addLimitLine(limitLine)
             
@@ -89,23 +109,38 @@ class ViewController: NSViewController, ChartViewDelegate {
         
         
         // Mock Data
-        let date_1: Date = Calendar.current.date(byAdding: .day, value: 3, to: Date())!
-        let date_2: Date = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
-        let date_3: Date = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-        let date_4: Date = Calendar.current.date(byAdding: .day, value: 0, to: Date())!
+        let date_1: Date = Calendar.current.date(byAdding: .day, value: 8, to: Date())!
+        let date_2: Date = Calendar.current.date(byAdding: .day, value: 7, to: Date())!
+        let date_3: Date = Calendar.current.date(byAdding: .day, value: 6, to: Date())!
+        let date_4: Date = Calendar.current.date(byAdding: .day, value: 5, to: Date())!
+        let date_5: Date = Calendar.current.date(byAdding: .day, value: 4, to: Date())!
+        let date_6: Date = Calendar.current.date(byAdding: .day, value: 3, to: Date())!
+        let date_7: Date = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
+        let date_8: Date = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+        let date_9: Date = Calendar.current.date(byAdding: .day, value: 0, to: Date())!
         
         let num_data_1: TimeInterval = date_1.timeIntervalSince1970
         let num_data_2: TimeInterval = date_2.timeIntervalSince1970
         let num_data_3: TimeInterval = date_3.timeIntervalSince1970
         let num_data_4: TimeInterval = date_4.timeIntervalSince1970
+        let num_data_5: TimeInterval = date_5.timeIntervalSince1970
+        let num_data_6: TimeInterval = date_6.timeIntervalSince1970
+        let num_data_7: TimeInterval = date_7.timeIntervalSince1970
+        let num_data_8: TimeInterval = date_8.timeIntervalSince1970
+        let num_data_9: TimeInterval = date_9.timeIntervalSince1970
     
         
-        dataEntries.append(BarChartDataEntry(x: (num_data_4 - num_data_4) / (3600 * 24), y: 2.0))
-        dataEntries.append(BarChartDataEntry(x: (num_data_3 - num_data_4) / (3600 * 24), y: 3.0))
-        dataEntries.append(BarChartDataEntry(x: (num_data_2 - num_data_4) / (3600 * 24), y: 2.0))
-        dataEntries.append(BarChartDataEntry(x: (num_data_1 - num_data_4) / (3600 * 24), y: 1.0))
+        dataEntries.append(BarChartDataEntry(x: (num_data_9 - num_data_9) / (3600 * 24), y: 14.0))
+        dataEntries.append(BarChartDataEntry(x: (num_data_8 - num_data_9) / (3600 * 24), y: 27.0))
+        dataEntries.append(BarChartDataEntry(x: (num_data_7 - num_data_9) / (3600 * 24), y: 55.0))
+        dataEntries.append(BarChartDataEntry(x: (num_data_6 - num_data_9) / (3600 * 24), y: 38.0))
+        dataEntries.append(BarChartDataEntry(x: (num_data_5 - num_data_9) / (3600 * 24), y: 3.0))
+        dataEntries.append(BarChartDataEntry(x: (num_data_4 - num_data_9) / (3600 * 24), y: 32.0))
+        dataEntries.append(BarChartDataEntry(x: (num_data_3 - num_data_9) / (3600 * 24), y: 43.0))
+        dataEntries.append(BarChartDataEntry(x: (num_data_2 - num_data_9) / (3600 * 24), y: 49.0))
+        dataEntries.append(BarChartDataEntry(x: (num_data_1 - num_data_9) / (3600 * 24), y: 21.0))
         
-        setUpBarChart(retreivedDataEntries: dataEntries, earlistTimeInRetrievedEntries: num_data_4)
+        setUpBarChart(retreivedDataEntries: dataEntries, earlistTimeInRetrievedEntries: num_data_9)
     }
 
     

@@ -658,7 +658,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="MoodProve" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="35" y="-40"/>
+            <point key="canvasLocation" x="42" y="-112"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -667,9 +667,9 @@
                     <window key="window" title="MoodProve" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="556" y="319" width="526" height="397"/>
+                        <rect key="contentRect" x="556" y="319" width="1000" height="600"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="526" height="327"/>
+                        <value key="minSize" type="size" width="1000" height="600"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="7JF-NJ-9jn"/>
                         </connections>
@@ -681,7 +681,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="279"/>
+            <point key="canvasLocation" x="76" y="278.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
