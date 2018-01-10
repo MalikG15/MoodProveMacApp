@@ -58,7 +58,7 @@ class ViewController: NSViewController, ChartViewDelegate {
         
         
         moodDataChart.leftAxis.axisMinimum = 0
-        moodDataChart.leftAxis.axisMaximum = 61
+        moodDataChart.leftAxis.axisMaximum = 63
         
         // Allow users to see a bar cell highlighted when tapped.
         moodDataChart.highlightPerTapEnabled = true
