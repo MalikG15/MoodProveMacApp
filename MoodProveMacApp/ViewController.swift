@@ -144,7 +144,25 @@ class ViewController: NSViewController, ChartViewDelegate {
         setUpBarChart(retreivedDataEntries: dataEntries, earlistTimeInRetrievedEntries: num_data_9)
     }
 
-    
+    func calendarLogin() {
+        // create an instance and retain it
+        oauthswift = OAuth2Swift(
+            consumerKey:    MoodProveAPIKeys.GoogleCalendarConsumerKey,
+            consumerSecret:  MoodProveAPIKeys.GoogleCalendarSecretKey,
+            authorizeUrl:   "https://www.googleapis.com/auth/calendar",
+            responseType:   "token"
+        )
+        let handle = oauthswift.authorize(
+            withCallbackURL: URL(string: "oauth-swift://oauth-callback/instagram")!,
+            scope: "likes+comments", state:"INSTAGRAM",
+            success: { credential, response, parameters in
+                print(credential.oauthToken)
+                // Do your request
+        },
+            failure: { error in
+                print(error.localizedDescription)
+        }
+        )    }
 
 }
 

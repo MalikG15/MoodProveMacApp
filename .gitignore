@@ -4,3 +4,4 @@ Pods/
 MoodProve.xcodeproj/
 .gitignore.swp
 MoodProve.xcworkspace/contents.xcworkspacedata
+MoodProveMacApp/MoodProveAPIKeys.swift
