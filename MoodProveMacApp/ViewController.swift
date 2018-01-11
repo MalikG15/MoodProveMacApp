@@ -8,6 +8,7 @@
 
 import Cocoa
 import Charts
+import OAuthSwift
 
 class ViewController: NSViewController, ChartViewDelegate {
     
