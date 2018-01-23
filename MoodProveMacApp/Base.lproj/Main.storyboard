@@ -661,9 +661,40 @@
             <point key="canvasLocation" x="42" y="-112"/>
         </scene>
         <!--Window Controller-->
+        <scene sceneID="q8f-RE-XaY">
+            <objects>
+                <windowController storyboardIdentifier="OAuthResponseWindow" id="3gD-oU-hEH" customClass="OAuthResponseWindowController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="dQT-eC-l4s">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                    </window>
+                    <connections>
+                        <segue destination="yNL-cD-xt1" kind="relationship" relationship="window.shadowedContentViewController" id="cIw-p6-Fe8"/>
+                    </connections>
+                </windowController>
+                <customObject id="1V6-G1-xkK" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="933" y="-55"/>
+        </scene>
+        <!--Auth Response View Controller-->
+        <scene sceneID="E87-nI-LUz">
+            <objects>
+                <viewController storyboardIdentifier="OAuthResponseView" id="yNL-cD-xt1" customClass="OAuthResponseViewController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="LqE-1c-vJg">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="68Q-Pf-fgE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="933" y="391"/>
+        </scene>
+        <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" customClass="MainWindow" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="MoodProve" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -687,7 +718,7 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
+                    <view key="view" identifier="ViewController" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="562" height="363"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>

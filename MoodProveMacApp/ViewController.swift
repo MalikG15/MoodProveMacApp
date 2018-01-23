@@ -19,7 +19,10 @@ class ViewController: NSViewController, ChartViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        // Getting the current date to create a
+        
+        // OAuth Login Sequence Test
+        oauthLogin();
+        // Getting the current date to create fake data
         let date = Date()
         retrieveBarChartData(currentDate: date.timeIntervalSinceNow)
     }
@@ -144,26 +147,22 @@ class ViewController: NSViewController, ChartViewDelegate {
         setUpBarChart(retreivedDataEntries: dataEntries, earlistTimeInRetrievedEntries: num_data_9)
     }
 
-    func calendarLogin() {
-        // create an instance and retain it
-        oauthswift = OAuth2Swift(
-            consumerKey:    MoodProveAPIKeys.GoogleCalendarConsumerKey,
-            consumerSecret:  MoodProveAPIKeys.GoogleCalendarSecretKey,
-            authorizeUrl:   "https://www.googleapis.com/auth/calendar",
-            responseType:   "token"
-        )
-        let handle = oauthswift.authorize(
-            withCallbackURL: URL(string: "oauth-swift://oauth-callback/instagram")!,
-            scope: "likes+comments", state:"INSTAGRAM",
-            success: { credential, response, parameters in
-                print(credential.oauthToken)
-                // Do your request
-        },
-            failure: { error in
-                print(error.localizedDescription)
-        }
-        )    }
+    func oauthLogin() {
+        let link = "https://www.facebook.com/dialog/oauth?client_id=814429228756803&redirect_uri=http://localhost:8080/auth/facebook&response_type=code"
+        
 
+        if let url = URL(string: link), NSWorkspace.shared().open(url) {
+            print("Opening in default web browser...")
+        }
+
+          
+    }
+    
+    // Could be useful in the future
+    func bringToFront() {
+        let window = self.view.window
+        window?.collectionBehavior = NSWindowCollectionBehavior.moveToActiveSpace
+    }
 }
 
 
