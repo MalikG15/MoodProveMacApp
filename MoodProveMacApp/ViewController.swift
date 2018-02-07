@@ -148,7 +148,7 @@ class ViewController: NSViewController, ChartViewDelegate {
     }
 
     func oauthLogin() {
-        let link = "https://www.facebook.com/dialog/oauth?client_id=814429228756803&redirect_uri=http://localhost:8080/auth/facebook&response_type=code"
+        let link = "https://www.facebook.com/dialog/oauth?client_id=" + MoodProveAPIKeys.FacebookClientID + "&redirect_uri=http://localhost:8080/auth/facebook&response_type=code"
         
 
         if let url = URL(string: link), NSWorkspace.shared().open(url) {
