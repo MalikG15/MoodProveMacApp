@@ -10,13 +10,12 @@ import Cocoa
 
 class LoginViewController: NSViewController {
 
-    @IBAction func Transition(_ sender: Any) {
-        let storyboard = NSStoryboard(name: "Main", bundle: nil)
-        let controller: NSViewController = storyboard.instantiateController(withIdentifier: "OAuthResponseView") as! NSViewController
-        let window = NSApp.windows[0]
-        window.contentViewController = controller
+    @IBAction func registerClicked(_ sender: Any) {
+        if let subView = view.window?.windowController as? SubWindowController {
+            subView.moveToRegister()
+        }
+        
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.

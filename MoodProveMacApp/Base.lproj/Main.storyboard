@@ -663,12 +663,14 @@
         <!--Window Controller-->
         <scene sceneID="9A4-3C-6Rr">
             <objects>
-                <windowController id="IV4-fn-JnJ" sceneMemberID="viewController">
+                <windowController id="IV4-fn-JnJ" customClass="SubWindowController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Ptb-cP-sgm">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="245" y="301" width="480" height="270"/>
+                        <rect key="contentRect" x="245" y="301" width="500" height="300"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="500" height="300"/>
+                        <value key="maxSize" type="size" width="500" height="300"/>
                     </window>
                     <connections>
                         <segue destination="GPo-ft-lMf" kind="relationship" relationship="window.shadowedContentViewController" id="h8c-R7-srs"/>
@@ -678,36 +680,103 @@
             </objects>
             <point key="canvasLocation" x="-1658" y="-42"/>
         </scene>
-        <!--Login View Controller-->
+        <!--Login-->
         <scene sceneID="t3m-Qq-Vko">
             <objects>
-                <viewController id="GPo-ft-lMf" customClass="LoginViewController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Login" id="GPo-ft-lMf" customClass="LoginViewController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="WYE-f2-EGp">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="284"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5EK-IV-ijU">
-                                <rect key="frame" x="151" y="181" width="81" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Pzm-cB-ZWZ">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ySx-kL-9Rx">
+                                <rect key="frame" x="143" y="184" width="215" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="215" id="JM1-Ui-1EZ"/>
+                                    <constraint firstAttribute="height" constant="22" id="OlH-sN-RMe"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="johnsmith@apple.com" drawsBackground="YES" id="9Xd-gq-qCq">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fDR-gh-4Hq">
+                                <rect key="frame" x="143" y="152" width="215" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="5Ae-EF-zfb"/>
+                                    <constraint firstAttribute="width" constant="215" id="bWo-wH-UYZ"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="*****" drawsBackground="YES" id="2fP-OH-Lxn">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MxD-Ch-gYz">
+                                <rect key="frame" x="166" y="216" width="168" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="168" id="Hy5-WL-xxw"/>
+                                    <constraint firstAttribute="height" constant="48" id="d3K-Lb-IdT"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="MoodProve" id="5OI-Ls-xdb"/>
+                            </imageView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2rg-zW-VaR">
+                                <rect key="frame" x="184" y="114" width="132" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Dpt-Oe-yFh"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="F4z-iR-XVY"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="LXv-Av-xZC"/>
+                                    <constraint firstAttribute="width" constant="120" id="xm0-cI-Pk6"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="l7P-0y-7Pu">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LVe-xp-vmq">
+                                <rect key="frame" x="210" y="13" width="81" height="32"/>
+                                <buttonCell key="cell" type="push" title="Register" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3Rn-Bp-UpW">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="Transition:" target="GPo-ft-lMf" id="ftu-d9-Xy5"/>
+                                    <action selector="registerClicked:" target="GPo-ft-lMf" id="cSa-ba-ATr"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CnJ-bw-ck9">
+                                <rect key="frame" x="99" y="49" width="303" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Don't Have An Account? Click Below to Register!" id="ChT-dx-bd5">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="ySx-kL-9Rx" firstAttribute="centerX" secondItem="WYE-f2-EGp" secondAttribute="centerX" id="J7D-Vb-Qe5"/>
+                            <constraint firstItem="LVe-xp-vmq" firstAttribute="centerX" secondItem="WYE-f2-EGp" secondAttribute="centerX" id="Pp8-G6-o63"/>
+                            <constraint firstItem="LVe-xp-vmq" firstAttribute="top" secondItem="CnJ-bw-ck9" secondAttribute="bottom" constant="10" id="SDh-ds-dYU"/>
+                            <constraint firstItem="2rg-zW-VaR" firstAttribute="centerX" secondItem="WYE-f2-EGp" secondAttribute="centerX" id="TS3-Fu-3ag"/>
+                            <constraint firstItem="CnJ-bw-ck9" firstAttribute="centerX" secondItem="WYE-f2-EGp" secondAttribute="centerX" id="XDb-6v-FnN"/>
+                            <constraint firstAttribute="bottom" secondItem="LVe-xp-vmq" secondAttribute="bottom" constant="20" id="Yex-q8-SMT"/>
+                            <constraint firstItem="MxD-Ch-gYz" firstAttribute="centerX" secondItem="WYE-f2-EGp" secondAttribute="centerX" id="bUP-Xa-Ico"/>
+                            <constraint firstItem="fDR-gh-4Hq" firstAttribute="centerX" secondItem="WYE-f2-EGp" secondAttribute="centerX" id="bbu-9y-DDz"/>
+                            <constraint firstItem="fDR-gh-4Hq" firstAttribute="top" secondItem="ySx-kL-9Rx" secondAttribute="bottom" constant="10" id="dkG-03-Qm8"/>
+                            <constraint firstItem="MxD-Ch-gYz" firstAttribute="top" secondItem="WYE-f2-EGp" secondAttribute="top" constant="20" id="lMF-un-5H7"/>
+                            <constraint firstItem="CnJ-bw-ck9" firstAttribute="centerX" secondItem="WYE-f2-EGp" secondAttribute="centerX" id="pNr-3Z-llZ"/>
+                            <constraint firstItem="2rg-zW-VaR" firstAttribute="top" secondItem="fDR-gh-4Hq" secondAttribute="bottom" constant="10" id="rQT-58-Rp8"/>
+                            <constraint firstItem="ySx-kL-9Rx" firstAttribute="top" secondItem="MxD-Ch-gYz" secondAttribute="bottom" constant="10" id="tch-ZL-DGF"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="kyr-ML-5lD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1658" y="503"/>
+            <point key="canvasLocation" x="-1658" y="464"/>
         </scene>
-        <!--Auth Response View Controller-->
+        <!--OAuthResponse-->
         <scene sceneID="E87-nI-LUz">
             <objects>
-                <viewController storyboardIdentifier="OAuthResponseView" id="yNL-cD-xt1" customClass="OAuthResponseViewController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="OAuthResponse" storyboardIdentifier="OAuthResponseView" id="yNL-cD-xt1" customClass="OAuthResponseViewController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="LqE-1c-vJg">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -715,7 +784,20 @@
                 </viewController>
                 <customObject id="68Q-Pf-fgE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1114" y="353"/>
+            <point key="canvasLocation" x="-1108" y="36"/>
+        </scene>
+        <!--Register View Controller-->
+        <scene sceneID="U6N-o8-UfZ">
+            <objects>
+                <viewController storyboardIdentifier="registerVC" id="4HW-BJ-BdE" customClass="RegisterViewController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="wog-6b-eLp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="deO-76-mgP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1102" y="499.5"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -768,4 +850,7 @@
             <point key="canvasLocation" x="75" y="930.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MoodProve" width="219" height="46"/>
+    </resources>
 </document>

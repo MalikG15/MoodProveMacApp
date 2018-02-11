@@ -16,4 +16,11 @@ class SubWindowController: NSWindowController {
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     }
     
+    func moveToRegister() {
+        if let registerVC = storyboard?.instantiateController(withIdentifier: "registerVC") as? RegisterViewController {
+            window?.contentView = registerVC.view
+        }
+
+    }
+    
 }
