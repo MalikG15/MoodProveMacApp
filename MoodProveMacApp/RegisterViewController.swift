@@ -13,6 +13,7 @@ class RegisterViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        self.view.window?.setFrame(NSRect(x:0,y:0,width:1000,height:300), display: true)
     }
     
 }
