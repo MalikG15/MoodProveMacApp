@@ -764,7 +764,7 @@
                                     <constraint firstAttribute="width" constant="215" id="w9Z-3T-j0J"/>
                                     <constraint firstAttribute="height" constant="22" id="zlv-ky-Kij"/>
                                 </constraints>
-                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" placeholderString="password" drawsBackground="YES" usesSingleLineMode="YES" id="2gq-NP-t3u">
+                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" placeholderString="•••••••••••" drawsBackground="YES" usesSingleLineMode="YES" id="2gq-NP-t3u">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -809,7 +809,7 @@
         <scene sceneID="U6N-o8-UfZ">
             <objects>
                 <viewController storyboardIdentifier="registerVC" id="4HW-BJ-BdE" customClass="RegisterViewController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="wog-6b-eLp">
+                    <view key="view" autoresizesSubviews="NO" id="wog-6b-eLp">
                         <rect key="frame" x="0.0" y="0.0" width="500" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -829,19 +829,19 @@
                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="MoodProveQuality" id="MNB-vN-qML"/>
                                         </imageView>
                                         <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xDq-bJ-kpJ">
-                                            <rect key="frame" x="142" y="278" width="215" height="22"/>
+                                            <rect key="frame" x="142" y="252" width="215" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="C4c-I8-hZh"/>
                                                 <constraint firstAttribute="width" constant="215" id="X9I-zs-Se9"/>
                                             </constraints>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="johnsmith@apple.com" drawsBackground="YES" id="ScH-FO-geb">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="email" drawsBackground="YES" id="ScH-FO-geb">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <secureTextField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iAM-hL-alj">
-                                            <rect key="frame" x="142" y="233" width="215" height="22"/>
+                                            <rect key="frame" x="142" y="220" width="215" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="EjC-JU-ztb"/>
                                                 <constraint firstAttribute="width" constant="215" id="kDw-dR-osz"/>
@@ -937,6 +937,18 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                         </button>
+                                        <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Z0-tD-Van">
+                                            <rect key="frame" x="142" y="284" width="215" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="jCg-Hr-Eh2"/>
+                                                <constraint firstAttribute="width" constant="215" id="ql3-vt-NoK"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="name" drawsBackground="YES" id="HGM-2m-yGA">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Ek8-1R-NPK" firstAttribute="centerX" secondItem="hjb-Vn-qMl" secondAttribute="centerX" id="0Gw-sn-WZm"/>
@@ -944,17 +956,19 @@
                                         <constraint firstItem="xDq-bJ-kpJ" firstAttribute="centerX" secondItem="hjb-Vn-qMl" secondAttribute="centerX" id="5c3-Kf-pfn"/>
                                         <constraint firstItem="rRn-fP-dqe" firstAttribute="top" secondItem="hjb-Vn-qMl" secondAttribute="top" id="6VD-j4-ewK"/>
                                         <constraint firstItem="9hw-fY-Vp9" firstAttribute="centerX" secondItem="hjb-Vn-qMl" secondAttribute="centerX" id="8bJ-Gs-hOc"/>
+                                        <constraint firstItem="5Z0-tD-Van" firstAttribute="top" secondItem="rRn-fP-dqe" secondAttribute="bottom" constant="2" id="8nz-Pd-0cp"/>
                                         <constraint firstItem="rRn-fP-dqe" firstAttribute="centerX" secondItem="hjb-Vn-qMl" secondAttribute="centerX" id="Adj-QU-UUh"/>
+                                        <constraint firstItem="xDq-bJ-kpJ" firstAttribute="top" secondItem="5Z0-tD-Van" secondAttribute="bottom" constant="10" id="D3I-1R-AtU"/>
                                         <constraint firstItem="phb-ZN-HNv" firstAttribute="centerX" secondItem="hjb-Vn-qMl" secondAttribute="centerX" id="DPZ-sO-sET"/>
                                         <constraint firstItem="9hw-fY-Vp9" firstAttribute="top" secondItem="Ek8-1R-NPK" secondAttribute="bottom" constant="39" id="Dih-RW-Ecb"/>
                                         <constraint firstItem="Ek8-1R-NPK" firstAttribute="top" secondItem="C0h-8v-wL3" secondAttribute="bottom" constant="20" id="Hre-CE-e71"/>
                                         <constraint firstItem="C0h-8v-wL3" firstAttribute="centerX" secondItem="hjb-Vn-qMl" secondAttribute="centerX" id="IRX-CW-zMq"/>
                                         <constraint firstItem="xf0-Vx-BPB" firstAttribute="top" secondItem="9hw-fY-Vp9" secondAttribute="bottom" constant="8" id="JFr-Ai-zIc"/>
-                                        <constraint firstItem="IFq-3J-llh" firstAttribute="top" secondItem="iAM-hL-alj" secondAttribute="bottom" constant="23" id="QFO-LW-Pmr"/>
+                                        <constraint firstItem="IFq-3J-llh" firstAttribute="top" secondItem="iAM-hL-alj" secondAttribute="bottom" constant="10" id="Niv-BG-Qul"/>
+                                        <constraint firstItem="5Z0-tD-Van" firstAttribute="centerX" secondItem="hjb-Vn-qMl" secondAttribute="centerX" id="OV4-Xj-zqn"/>
                                         <constraint firstItem="iAM-hL-alj" firstAttribute="centerX" secondItem="hjb-Vn-qMl" secondAttribute="centerX" id="XhF-Ul-yDG"/>
                                         <constraint firstItem="C0h-8v-wL3" firstAttribute="top" secondItem="phb-ZN-HNv" secondAttribute="bottom" constant="8" id="aMD-za-cXb"/>
-                                        <constraint firstItem="xDq-bJ-kpJ" firstAttribute="top" secondItem="rRn-fP-dqe" secondAttribute="bottom" constant="8" id="gKz-mQ-RlL"/>
-                                        <constraint firstItem="iAM-hL-alj" firstAttribute="top" secondItem="xDq-bJ-kpJ" secondAttribute="bottom" constant="23" id="oer-lA-qwa"/>
+                                        <constraint firstItem="iAM-hL-alj" firstAttribute="top" secondItem="xDq-bJ-kpJ" secondAttribute="bottom" constant="10" id="gSX-r1-cnT"/>
                                         <constraint firstItem="phb-ZN-HNv" firstAttribute="top" secondItem="IFq-3J-llh" secondAttribute="bottom" constant="8" id="un5-Tp-bIQ"/>
                                         <constraint firstItem="xf0-Vx-BPB" firstAttribute="centerX" secondItem="hjb-Vn-qMl" secondAttribute="centerX" id="wB4-hs-Gvc"/>
                                     </constraints>
