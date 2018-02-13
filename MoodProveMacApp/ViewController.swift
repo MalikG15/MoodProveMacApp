@@ -47,7 +47,6 @@ class MainViewController: NSViewController, ChartViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        
         // OAuth Login Sequence Test
         // oauthLogin();
         // Getting the current date to create fake data

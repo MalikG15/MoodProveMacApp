@@ -10,6 +10,20 @@ import Cocoa
 
 class RegisterViewController: NSViewController {
 
+    @IBOutlet weak var name: NSTextField!
+    
+    @IBOutlet weak var email: NSTextField!
+    
+    @IBOutlet weak var password: NSSecureTextField!
+    
+    @IBOutlet weak var passwordConfirmation: NSSecureTextField!
+    
+    @IBOutlet weak var wakeUpTime: NSPopUpButton!
+    
+    @IBAction func register(_ sender: Any) {
+        
+    }
+    
     @IBAction func loginClicked(_ sender: Any) {
         if let subView = view.window?.windowController as? SubWindowController {
             subView.moveToLogin()
@@ -18,7 +32,6 @@ class RegisterViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        //self.view.window?.setFrame(NSRect(x:0,y:0,width:1000,height:300), display: true)
     }
     
 }

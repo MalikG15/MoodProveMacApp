@@ -1047,6 +1047,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="register:" target="4HW-BJ-BdE" id="L20-DR-QYJ"/>
+                                            </connections>
                                         </button>
                                         <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Z0-tD-Van">
                                             <rect key="frame" x="142" y="284" width="215" height="22"/>
@@ -1089,6 +1092,13 @@
                             </box>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="email" destination="xDq-bJ-kpJ" id="FpZ-yV-Tcb"/>
+                        <outlet property="name" destination="5Z0-tD-Van" id="wkJ-lN-BCZ"/>
+                        <outlet property="password" destination="iAM-hL-alj" id="Q1D-Hg-9fR"/>
+                        <outlet property="passwordConfirmation" destination="IFq-3J-llh" id="V1B-wE-CVe"/>
+                        <outlet property="wakeUpTime" destination="C0h-8v-wL3" id="6pw-uU-eTT"/>
+                    </connections>
                 </viewController>
                 <customObject id="deO-76-mgP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

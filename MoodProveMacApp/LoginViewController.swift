@@ -48,8 +48,10 @@ class LoginViewController: NSViewController {
         }
         
         let storyboard = NSStoryboard(name: "Main",bundle: nil)
-        let controller: MainViewController = storyboard.instantiateController(withIdentifier: "mainView") as! MainViewController
-        openMain = NSWindow(contentViewController: controller)
+        let mainViewController: MainViewController = storyboard.instantiateController(withIdentifier: "mainView") as! MainViewController
+        mainViewController.userId = json["userid"].stringValue
+        mainViewController.name = json["name"].stringValue
+        openMain = NSWindow(contentViewController: mainViewController)
         openMain?.makeKeyAndOrderFront(self)
         let vc = NSWindowController(window: openMain)
         vc.showWindow(self)
