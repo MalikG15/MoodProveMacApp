@@ -7,28 +7,29 @@
 //
 
 import Cocoa
+import SwiftyJSON
 
 class MoodProveHTTP: NSObject {
+
     
     
-    static func getRequest(urlRequest: String) -> String {
+    func getRequest(urlRequest: String) -> JSON {
         let url = URL(string: urlRequest)!
+        var responseJSON: JSON = JSON.null
+        let semaphore = DispatchSemaphore(value: 0)
         URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             if (error != nil) {
                 print("There was an error submitting a GET request for url: " + urlRequest)
             } else {
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [String : AnyObject]
-                    // For count
-                    print(json as NSDictionary)
-                    
-                } catch let error as NSError{
-                    print(error)
+                if (data != nil) {
+                    responseJSON = JSON(data: data!)
                 }
+                semaphore.signal()
             }
         }).resume()
+         _ = semaphore.wait(timeout: DispatchTime.distantFuture)
         
-        return ""
+        return responseJSON
     }
 
 }

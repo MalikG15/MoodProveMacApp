@@ -9,6 +9,7 @@
 import Cocoa
 import Charts
 import OAuthSwift
+import SwiftyJSON
 
 class MainViewController: NSViewController, ChartViewDelegate {
     
@@ -21,13 +22,24 @@ class MainViewController: NSViewController, ChartViewDelegate {
     @IBOutlet weak var moodDataChart: BarChartView!
     
     @IBAction func getPastMoodBefore(_ sender: Any) {
-        var res = MoodProveHTTP.getRequest(urlRequest: moodProveServerDomain + "/mood/beforeOrAfter?userid=1&timestamp=" +
-            String(describing: Int(minimumTimestamp!.timeIntervalSince1970)) + "&style=before")
+        
+        // String(describing: Int(minimumTimestamp!.timeIntervalSince1970))
+        
+        let http: MoodProveHTTP = MoodProveHTTP()
+        OperationQueue.main.addOperation {
+            let res = http.getRequest(urlRequest: self.moodProveServerDomain + "/mood/beforeOrAfter?userid=happy&timestamp=" +
+            "2" + "&type=before")
+            self.handleChangeInMoodTime(json: res, minIsNowMax: true)
+        }
+        
+        
     }
 
     @IBAction func getPastMoodAfter(_ sender: Any) {
-        var res = MoodProveHTTP.getRequest(urlRequest: moodProveServerDomain + "/mood/beforeOrAfter?userid=1&timestamp=" +
-            String(describing: Int(minimumTimestamp!.timeIntervalSince1970)) + "&style=after")
+        /*var res = MoodProveHTTP.getRequest(urlRequest: moodProveServerDomain + "/mood/beforeOrAfter?userid=1&timestamp=" +
+            String(describing: Int(minimumTimestamp!.timeIntervalSince1970)) + "&type=after")
+        
+        handleChangeInMoodTime(json: res, minIsNowMax: false)*/
     }
     
     
@@ -173,6 +185,17 @@ class MainViewController: NSViewController, ChartViewDelegate {
         }
 
           
+    }
+    
+    func handleChangeInMoodTime(json: JSON, minIsNowMax: Bool) {
+        if (json == JSON.null) {
+            return
+        }
+        
+        print(json["data"])
+        
+        
+        
     }
     
     // Could be useful in the future
