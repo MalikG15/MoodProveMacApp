@@ -10,7 +10,7 @@ import Cocoa
 import Charts
 import OAuthSwift
 
-class ViewController: NSViewController, ChartViewDelegate {
+class MainViewController: NSViewController, ChartViewDelegate {
     
     @IBOutlet weak var moodDataChart: BarChartView!
     
@@ -21,7 +21,7 @@ class ViewController: NSViewController, ChartViewDelegate {
         
         
         // OAuth Login Sequence Test
-        oauthLogin();
+        // oauthLogin();
         // Getting the current date to create fake data
         let date = Date()
         retrieveBarChartData(currentDate: date.timeIntervalSinceNow)
@@ -102,7 +102,7 @@ class ViewController: NSViewController, ChartViewDelegate {
         }
         
         //moodDataChart.animate(xAxisDuration: 5000, yAxisDuration: 5000)
-        moodDataChart.backgroundColor = NSColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1)
+        moodDataChart.backgroundColor = NSColor(red: 1, green: 1, blue: 1, alpha: 1)
         moodDataChart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
         
         moodDataChart.delegate = self
@@ -163,6 +163,7 @@ class ViewController: NSViewController, ChartViewDelegate {
         let window = self.view.window
         window?.collectionBehavior = NSWindowCollectionBehavior.moveToActiveSpace
     }
+    
 }
 
 

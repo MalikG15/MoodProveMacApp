@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G18013" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="IV4-fn-JnJ">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G18013" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
@@ -659,7 +659,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="MoodProve" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="42" y="-112"/>
+            <point key="canvasLocation" x="362" y="-380"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="9A4-3C-6Rr">
@@ -988,7 +988,7 @@
             <objects>
                 <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="MoodProve" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="562" y="319" width="994" height="600"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -1004,26 +1004,82 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="79" y="278"/>
+            <point key="canvasLocation" x="362" y="36"/>
         </scene>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="MainViewController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" identifier="ViewController" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="562" height="363"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="gv6-JB-f1n" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="36" y="54" width="481" height="270"/>
-                            </customView>
+                            <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="gBw-xV-dOX">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <view key="contentView" ambiguous="YES" id="uPC-yb-ty2">
+                                    <rect key="frame" x="1" y="1" width="1918" height="1078"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <customView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gv6-JB-f1n" customClass="BarChartView" customModule="Charts">
+                                            <rect key="frame" x="74" y="46" width="1770" height="896"/>
+                                        </customView>
+                                        <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5bX-wX-LSe">
+                                            <rect key="frame" x="86" y="941" width="69" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="69" id="H3B-1d-S41"/>
+                                                <constraint firstAttribute="height" constant="21" id="YUE-Rb-TTt"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="&lt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ldK-Tk-e1A">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                        </button>
+                                        <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IaS-QT-Hit">
+                                            <rect key="frame" x="155" y="941" width="69" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="69" id="8Q3-zY-GKj"/>
+                                                <constraint firstAttribute="height" constant="21" id="cL9-Qg-qUN"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="&gt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zw9-PJ-dIO">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WLd-Q4-KeN">
+                                            <rect key="frame" x="685" y="950" width="549" height="75"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="545" id="NWT-Vs-kjO"/>
+                                                <constraint firstAttribute="height" constant="75" id="zeA-ot-Xqo"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Your Mood Data" id="Wma-mO-DtL">
+                                                <font key="font" size="51" name="Seravek"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="IaS-QT-Hit" firstAttribute="leading" secondItem="5bX-wX-LSe" secondAttribute="trailing" constant="12" id="8MR-Rb-vE1"/>
+                                        <constraint firstAttribute="bottom" secondItem="gv6-JB-f1n" secondAttribute="bottom" constant="45" id="8sy-Ux-KHi"/>
+                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="WLd-Q4-KeN" secondAttribute="bottom" constant="8" id="FRm-Ag-DS6"/>
+                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="GSD-6g-CTP"/>
+                                        <constraint firstItem="WLd-Q4-KeN" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="53" id="KTO-G0-7h8"/>
+                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="136" id="M8I-PL-Tbc"/>
+                                        <constraint firstItem="WLd-Q4-KeN" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="UiI-qd-bIH"/>
+                                        <constraint firstAttribute="trailing" secondItem="gv6-JB-f1n" secondAttribute="trailing" constant="75" id="aMw-NP-sMM"/>
+                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="IaS-QT-Hit" secondAttribute="bottom" constant="6" id="b0e-oR-YEk"/>
+                                        <constraint firstItem="5bX-wX-LSe" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="109" id="eBR-wA-KgE"/>
+                                        <constraint firstItem="IaS-QT-Hit" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="109" id="kRU-7S-weh"/>
+                                        <constraint firstItem="5bX-wX-LSe" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="74" id="rn7-RV-VUF"/>
+                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="63" id="tqY-WA-K0d"/>
+                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="5bX-wX-LSe" secondAttribute="bottom" constant="6" id="zcV-Zm-jiL"/>
+                                    </constraints>
+                                </view>
+                                <color key="borderColor" red="0.047058824450000002" green="0.91372549530000002" blue="0.3058823645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="fillColor" red="0.99607843159999998" green="0.99607843159999998" blue="0.99215686319999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </box>
                         </subviews>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="gv6-JB-f1n" secondAttribute="bottom" constant="54" id="BUg-rP-7WU"/>
-                            <constraint firstAttribute="trailing" secondItem="gv6-JB-f1n" secondAttribute="trailing" constant="45" id="Z1r-5C-c3G"/>
-                            <constraint firstItem="gv6-JB-f1n" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="36" id="gZm-ma-wNm"/>
-                            <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="39" id="zTj-NS-QJs"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="moodDataChart" destination="gv6-JB-f1n" id="loR-hZ-vYL"/>
@@ -1031,7 +1087,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="930.5"/>
+            <point key="canvasLocation" x="139" y="1024"/>
         </scene>
     </scenes>
     <resources>

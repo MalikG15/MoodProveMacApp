@@ -15,9 +15,7 @@ class MainWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-        if let screen = NSScreen.main() {
-            mainWindow.setFrame(screen.visibleFrame, display: true, animate: true)
-        }
+        self.window?.setContentSize(NSSize.init(width: 1920, height: 1080))
     }
 
 }
