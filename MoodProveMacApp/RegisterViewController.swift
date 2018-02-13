@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftyJSON
 
 class RegisterViewController: NSViewController {
     
@@ -39,10 +40,14 @@ class RegisterViewController: NSViewController {
         else if (password != passwordConfirmation) {
             warning.isHidden = false
             warning.stringValue = "Your passwords do not match!"
+            password.stringValue = ""
+            password.stringValue = ""
             return
         }
         warning.isHidden = true
-        handleRegistration(name: name.stringValue, email: email.stringValue, password: password.stringValue, wakeUpTime: wakeUpTime.titleOfSelectedItem!)
+        let path = "/user/add?name=\(name.stringValue)&email=\(email.stringValue)&password=\(password.stringValue)&timeOfCheckIn=\(wakeUpTime.titleOfSelectedItem!)"
+        let res = MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + path)
+        handleRegistration(json: res)
     }
     
     @IBAction func loginClicked(_ sender: Any) {
@@ -62,8 +67,18 @@ class RegisterViewController: NSViewController {
         wakeUpTime.addItems(withTitles: options)
     }
     
-    func handleRegistration(name: String, email: String, password: String, wakeUpTime: String) {
-        print("Handling registration")
+    func handleRegistration(json: JSON) {
+        
+        
+        /*let storyboard = NSStoryboard(name: "Main",bundle: nil)
+        let mainViewController: MainViewController = storyboard.instantiateController(withIdentifier: "mainView") as! MainViewController
+        mainViewController.userId = json["userid"].stringValue
+        mainViewController.name = json["name"].stringValue
+        openMain = NSWindow(contentViewController: mainViewController)
+        openMain?.makeKeyAndOrderFront(self)
+        let vc = NSWindowController(window: openMain)
+        vc.showWindow(self)
+        self.view.window?.close()*/
     }
     
 }

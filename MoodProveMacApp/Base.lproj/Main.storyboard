@@ -994,12 +994,12 @@
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C0h-8v-wL3">
-                                            <rect key="frame" x="212" y="131" width="76" height="26"/>
+                                            <rect key="frame" x="194" y="131" width="112" height="26"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="71" id="BHr-iR-WEh"/>
-                                                <constraint firstAttribute="height" constant="21" id="O9r-zV-N7t"/>
+                                                <constraint firstAttribute="width" constant="112" id="Amh-yo-Al4"/>
+                                                <constraint firstAttribute="height" constant="26" id="BL7-6W-V0m"/>
                                             </constraints>
-                                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="dTn-md-XYK" id="etQ-wq-Edt">
+                                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="dTn-md-XYK" id="etQ-wq-Edt">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
                                                 <menu key="menu" id="Lvf-al-NCW">
