@@ -14,6 +14,8 @@ class LoginViewController: NSViewController {
     @IBOutlet weak var password: NSSecureTextField!
     @IBOutlet weak var email: NSTextField!
     
+    var openMain: NSWindow?
+    
     
     @IBAction func login(_ sender: Any) {
         let emailText = email.stringValue
@@ -45,15 +47,13 @@ class LoginViewController: NSViewController {
             return
         }
         
-        var mainWindow: NSWindow? = nil
         let storyboard = NSStoryboard(name: "Main",bundle: nil)
         let controller: MainViewController = storyboard.instantiateController(withIdentifier: "mainView") as! MainViewController
-        controller.userId = json["userid"].stringValue
-        controller.name = json["name"].stringValue
-        mainWindow = NSWindow(contentViewController: controller)
-        mainWindow?.makeKeyAndOrderFront(self)
-        let windowController = NSWindowController(window: mainWindow)
-        windowController.showWindow(self)
+        openMain = NSWindow(contentViewController: controller)
+        openMain?.makeKeyAndOrderFront(self)
+        let vc = NSWindowController(window: openMain)
+        vc.showWindow(self)
+        self.view.window?.close()
         
     }
     

@@ -1315,10 +1315,6 @@
                                         </customView>
                                         <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5bX-wX-LSe">
                                             <rect key="frame" x="86" y="941" width="69" height="32"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="69" id="H3B-1d-S41"/>
-                                                <constraint firstAttribute="height" constant="21" id="YUE-Rb-TTt"/>
-                                            </constraints>
                                             <buttonCell key="cell" type="push" title="&lt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ldK-Tk-e1A">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1330,8 +1326,7 @@
                                         <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IaS-QT-Hit">
                                             <rect key="frame" x="155" y="941" width="69" height="32"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="69" id="8Q3-zY-GKj"/>
-                                                <constraint firstAttribute="height" constant="21" id="cL9-Qg-qUN"/>
+                                                <constraint firstAttribute="width" constant="57" id="F2z-h2-tWt"/>
                                             </constraints>
                                             <buttonCell key="cell" type="push" title="&gt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zw9-PJ-dIO">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1344,8 +1339,7 @@
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WLd-Q4-KeN">
                                             <rect key="frame" x="685" y="950" width="549" height="75"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="545" id="NWT-Vs-kjO"/>
-                                                <constraint firstAttribute="height" constant="75" id="zeA-ot-Xqo"/>
+                                                <constraint firstAttribute="width" constant="545" id="kor-FU-VZx"/>
                                             </constraints>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Your Mood Data" id="Wma-mO-DtL">
                                                 <font key="font" size="51" name="Seravek"/>
@@ -1355,20 +1349,17 @@
                                         </textField>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="IaS-QT-Hit" firstAttribute="leading" secondItem="5bX-wX-LSe" secondAttribute="trailing" constant="12" id="8MR-Rb-vE1"/>
-                                        <constraint firstAttribute="bottom" secondItem="gv6-JB-f1n" secondAttribute="bottom" constant="45" id="8sy-Ux-KHi"/>
-                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="WLd-Q4-KeN" secondAttribute="bottom" constant="8" id="FRm-Ag-DS6"/>
-                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="GSD-6g-CTP"/>
-                                        <constraint firstItem="WLd-Q4-KeN" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="53" id="KTO-G0-7h8"/>
-                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="136" id="M8I-PL-Tbc"/>
-                                        <constraint firstItem="WLd-Q4-KeN" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="UiI-qd-bIH"/>
-                                        <constraint firstAttribute="trailing" secondItem="gv6-JB-f1n" secondAttribute="trailing" constant="75" id="aMw-NP-sMM"/>
-                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="IaS-QT-Hit" secondAttribute="bottom" constant="6" id="b0e-oR-YEk"/>
-                                        <constraint firstItem="5bX-wX-LSe" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="109" id="eBR-wA-KgE"/>
-                                        <constraint firstItem="IaS-QT-Hit" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="109" id="kRU-7S-weh"/>
-                                        <constraint firstItem="5bX-wX-LSe" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="74" id="rn7-RV-VUF"/>
-                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="63" id="tqY-WA-K0d"/>
-                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="5bX-wX-LSe" secondAttribute="bottom" constant="6" id="zcV-Zm-jiL"/>
+                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="WLd-Q4-KeN" secondAttribute="bottom" constant="8" symbolic="YES" id="1AE-ey-lip"/>
+                                        <constraint firstAttribute="bottom" secondItem="gv6-JB-f1n" secondAttribute="bottom" constant="46" id="3M2-Go-hnu"/>
+                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="IaS-QT-Hit" secondAttribute="bottom" constant="6" id="3Y4-c1-esp"/>
+                                        <constraint firstItem="IaS-QT-Hit" firstAttribute="leading" secondItem="5bX-wX-LSe" secondAttribute="trailing" constant="12" symbolic="YES" id="PT3-K1-JjF"/>
+                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="Rz8-fC-aoU"/>
+                                        <constraint firstItem="5bX-wX-LSe" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="92" id="TJ6-kA-99O"/>
+                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="136" id="ZR2-DP-2jd"/>
+                                        <constraint firstItem="IaS-QT-Hit" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="161" id="bpo-r2-RWe"/>
+                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="74" id="cQz-6N-oZa"/>
+                                        <constraint firstItem="5bX-wX-LSe" firstAttribute="baseline" secondItem="IaS-QT-Hit" secondAttribute="baseline" id="ckD-PM-j6V"/>
+                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="centerX" secondItem="WLd-Q4-KeN" secondAttribute="centerX" id="rxG-Mw-Rar"/>
                                     </constraints>
                                 </view>
                                 <color key="borderColor" red="0.047058824450000002" green="0.91372549530000002" blue="0.3058823645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
