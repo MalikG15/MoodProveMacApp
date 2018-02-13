@@ -14,17 +14,20 @@ class MainViewController: NSViewController, ChartViewDelegate {
     
     var minimumTimestamp: Date?
     
+    var maximumTimestamp: Date?
+    
     let moodProveServerDomain: String = "http://localhost:8080"
     
     @IBOutlet weak var moodDataChart: BarChartView!
     
     @IBAction func getPastMoodBefore(_ sender: Any) {
-        var res = MoodProveHTTP.getRequest(urlRequest: moodProveServerDomain + "/mood/before?userid=1&timestamp=" +
-            String(describing: Int(minimumTimestamp!.timeIntervalSince1970)))
+        var res = MoodProveHTTP.getRequest(urlRequest: moodProveServerDomain + "/mood/beforeOrAfter?userid=1&timestamp=" +
+            String(describing: Int(minimumTimestamp!.timeIntervalSince1970)) + "&style=before")
     }
 
     @IBAction func getPastMoodAfter(_ sender: Any) {
-        
+        var res = MoodProveHTTP.getRequest(urlRequest: moodProveServerDomain + "/mood/beforeOrAfter?userid=1&timestamp=" +
+            String(describing: Int(minimumTimestamp!.timeIntervalSince1970)) + "&style=after")
     }
     
     

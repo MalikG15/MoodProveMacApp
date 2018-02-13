@@ -8,6 +8,7 @@ target 'MoodProve' do
   # Pods for MoodProveMacApp
   pod 'Charts', '3.0.3'
   pod 'OAuthSwift', '1.1.2'
+  pod 'SwiftyJSON', '3.1.4'
 
   target 'MoodProveTests' do
     inherit! :search_paths
