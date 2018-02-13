@@ -1010,6 +1010,9 @@
                                                     </items>
                                                 </menu>
                                             </popUpButtonCell>
+                                            <connections>
+                                                <action selector="wakeUpButtonSelected:" target="4HW-BJ-BdE" id="YVv-6f-xVv"/>
+                                            </connections>
                                         </popUpButton>
                                         <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xf0-Vx-BPB">
                                             <rect key="frame" x="209" y="1" width="81" height="32"/>
@@ -1063,6 +1066,18 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="221-4W-cRB">
+                                            <rect key="frame" x="59" y="62" width="368" height="23"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="23" id="qp5-Uo-sQK"/>
+                                                <constraint firstAttribute="width" constant="364" id="rSi-qI-p6l"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="UCU-Z4-cyM">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Ek8-1R-NPK" firstAttribute="centerX" secondItem="hjb-Vn-qMl" secondAttribute="centerX" id="0Gw-sn-WZm"/>
@@ -1074,7 +1089,6 @@
                                         <constraint firstItem="rRn-fP-dqe" firstAttribute="centerX" secondItem="hjb-Vn-qMl" secondAttribute="centerX" id="Adj-QU-UUh"/>
                                         <constraint firstItem="xDq-bJ-kpJ" firstAttribute="top" secondItem="5Z0-tD-Van" secondAttribute="bottom" constant="10" id="D3I-1R-AtU"/>
                                         <constraint firstItem="phb-ZN-HNv" firstAttribute="centerX" secondItem="hjb-Vn-qMl" secondAttribute="centerX" id="DPZ-sO-sET"/>
-                                        <constraint firstItem="9hw-fY-Vp9" firstAttribute="top" secondItem="Ek8-1R-NPK" secondAttribute="bottom" constant="39" id="Dih-RW-Ecb"/>
                                         <constraint firstItem="Ek8-1R-NPK" firstAttribute="top" secondItem="C0h-8v-wL3" secondAttribute="bottom" constant="20" id="Hre-CE-e71"/>
                                         <constraint firstItem="C0h-8v-wL3" firstAttribute="centerX" secondItem="hjb-Vn-qMl" secondAttribute="centerX" id="IRX-CW-zMq"/>
                                         <constraint firstItem="xf0-Vx-BPB" firstAttribute="top" secondItem="9hw-fY-Vp9" secondAttribute="bottom" constant="8" id="JFr-Ai-zIc"/>
@@ -1082,7 +1096,10 @@
                                         <constraint firstItem="5Z0-tD-Van" firstAttribute="centerX" secondItem="hjb-Vn-qMl" secondAttribute="centerX" id="OV4-Xj-zqn"/>
                                         <constraint firstItem="iAM-hL-alj" firstAttribute="centerX" secondItem="hjb-Vn-qMl" secondAttribute="centerX" id="XhF-Ul-yDG"/>
                                         <constraint firstItem="C0h-8v-wL3" firstAttribute="top" secondItem="phb-ZN-HNv" secondAttribute="bottom" constant="8" id="aMD-za-cXb"/>
+                                        <constraint firstItem="221-4W-cRB" firstAttribute="top" secondItem="Ek8-1R-NPK" secondAttribute="bottom" constant="8" id="b5w-BD-aMC"/>
+                                        <constraint firstItem="9hw-fY-Vp9" firstAttribute="top" secondItem="221-4W-cRB" secondAttribute="bottom" constant="8" id="fD9-C0-nGR"/>
                                         <constraint firstItem="iAM-hL-alj" firstAttribute="top" secondItem="xDq-bJ-kpJ" secondAttribute="bottom" constant="10" id="gSX-r1-cnT"/>
+                                        <constraint firstItem="221-4W-cRB" firstAttribute="centerX" secondItem="hjb-Vn-qMl" secondAttribute="centerX" id="jLR-Ow-RlG"/>
                                         <constraint firstItem="phb-ZN-HNv" firstAttribute="top" secondItem="IFq-3J-llh" secondAttribute="bottom" constant="8" id="un5-Tp-bIQ"/>
                                         <constraint firstItem="xf0-Vx-BPB" firstAttribute="centerX" secondItem="hjb-Vn-qMl" secondAttribute="centerX" id="wB4-hs-Gvc"/>
                                     </constraints>
@@ -1098,6 +1115,7 @@
                         <outlet property="password" destination="iAM-hL-alj" id="Q1D-Hg-9fR"/>
                         <outlet property="passwordConfirmation" destination="IFq-3J-llh" id="V1B-wE-CVe"/>
                         <outlet property="wakeUpTime" destination="C0h-8v-wL3" id="6pw-uU-eTT"/>
+                        <outlet property="warning" destination="221-4W-cRB" id="1nK-BP-BUh"/>
                     </connections>
                 </viewController>
                 <customObject id="deO-76-mgP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
