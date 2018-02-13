@@ -12,9 +12,22 @@ import OAuthSwift
 
 class MainViewController: NSViewController, ChartViewDelegate {
     
+    var minimumTimestamp: Date?
+    
+    let moodProveServerDomain: String = "http://localhost:8080"
+    
     @IBOutlet weak var moodDataChart: BarChartView!
     
+    @IBAction func getPastMoodBefore(_ sender: Any) {
+        var res = MoodProveHTTP.getRequest(urlRequest: moodProveServerDomain + "/mood/before?userid=1&timestamp=" +
+            String(describing: Int(minimumTimestamp!.timeIntervalSince1970)))
+    }
 
+    @IBAction func getPastMoodAfter(_ sender: Any) {
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -24,6 +37,7 @@ class MainViewController: NSViewController, ChartViewDelegate {
         // oauthLogin();
         // Getting the current date to create fake data
         let date = Date()
+        minimumTimestamp = date
         retrieveBarChartData(currentDate: date.timeIntervalSinceNow)
     }
 
