@@ -13,7 +13,7 @@ class MoodProveHTTP: NSObject {
 
     
     
-    func getRequest(urlRequest: String) -> JSON {
+    static func getRequest(urlRequest: String) -> JSON {
         let url = URL(string: urlRequest)!
         var responseJSON: JSON = JSON.null
         let semaphore = DispatchSemaphore(value: 0)

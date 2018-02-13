@@ -13,9 +13,9 @@ import SwiftyJSON
 
 class MainViewController: NSViewController, ChartViewDelegate {
     
-    var minimumTimestamp: Date?
+    var minimumTimestamp: TimeInterval?
     
-    var maximumTimestamp: Date?
+    var maximumTimestamp: TimeInterval?
     
     let moodProveServerDomain: String = "http://localhost:8080"
     
@@ -24,22 +24,18 @@ class MainViewController: NSViewController, ChartViewDelegate {
     @IBAction func getPastMoodBefore(_ sender: Any) {
         
         // String(describing: Int(minimumTimestamp!.timeIntervalSince1970))
-        
-        let http: MoodProveHTTP = MoodProveHTTP()
-        OperationQueue.main.addOperation {
-            let res = http.getRequest(urlRequest: self.moodProveServerDomain + "/mood/beforeOrAfter?userid=happy&timestamp=" +
-            "2" + "&type=before")
-            self.handleChangeInMoodTime(json: res, minIsNowMax: true)
-        }
-        
-        
+        let userid = "happy"
+        let timestamp = 3
+        let res = MoodProveHTTP.getRequest(urlRequest: "\(moodProveServerDomain)/mood/beforeOrAfter?userid=\(userid)&timestamp=\(minimumTimestamp!)&type=before")
+            self.handleChangeInMoodTime(json: res)
     }
 
     @IBAction func getPastMoodAfter(_ sender: Any) {
-        /*var res = MoodProveHTTP.getRequest(urlRequest: moodProveServerDomain + "/mood/beforeOrAfter?userid=1&timestamp=" +
-            String(describing: Int(minimumTimestamp!.timeIntervalSince1970)) + "&type=after")
-        
-        handleChangeInMoodTime(json: res, minIsNowMax: false)*/
+        // String(describing: Int(minimumTimestamp!.timeIntervalSince1970))
+        let userid = "happy"
+        let timestamp = 3
+        let res = MoodProveHTTP.getRequest(urlRequest: "\(moodProveServerDomain)/mood/beforeOrAfter?userid=\(userid)&timestamp=\(timestamp)&type=after")
+        self.handleChangeInMoodTime(json: res)
     }
     
     
@@ -52,8 +48,8 @@ class MainViewController: NSViewController, ChartViewDelegate {
         // oauthLogin();
         // Getting the current date to create fake data
         let date = Date()
-        minimumTimestamp = date
-        retrieveBarChartData(currentDate: date.timeIntervalSinceNow)
+        minimumTimestamp = date.timeIntervalSince1970
+        retrieveBarChartData(currentDate: date.timeIntervalSince1970)
     }
 
     override var representedObject: Any? {
@@ -63,10 +59,10 @@ class MainViewController: NSViewController, ChartViewDelegate {
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        
+    
     }
     
-    func setUpBarChart(retreivedDataEntries: [ChartDataEntry], earlistTimeInRetrievedEntries: TimeInterval) {
+    func setUpBarChart(barChartEntries: [ChartDataEntry], earlistTimeInRetrievedEntries: TimeInterval) {
         
         // Set up Date Formatter
         let formatter = DateFormatter()
@@ -84,7 +80,7 @@ class MainViewController: NSViewController, ChartViewDelegate {
         xAxis.valueFormatter = xValuesNumberFormatter
         
         
-        let barChartDataSet = BarChartDataSet(values: retreivedDataEntries, label: nil)
+        let barChartDataSet = BarChartDataSet(values: barChartEntries, label: nil)
         barChartDataSet.colors = [NSUIColor.magenta]
         let data = BarChartData(dataSets: [barChartDataSet])
         moodDataChart.data = data
@@ -173,7 +169,7 @@ class MainViewController: NSViewController, ChartViewDelegate {
         dataEntries.append(BarChartDataEntry(x: (num_data_2 - num_data_9) / (3600 * 24), y: 49.0))
         dataEntries.append(BarChartDataEntry(x: (num_data_1 - num_data_9) / (3600 * 24), y: 21.0))
         
-        setUpBarChart(retreivedDataEntries: dataEntries, earlistTimeInRetrievedEntries: num_data_9)
+        setUpBarChart(barChartEntries: dataEntries, earlistTimeInRetrievedEntries: num_data_9)
     }
 
     func oauthLogin() {
@@ -187,15 +183,40 @@ class MainViewController: NSViewController, ChartViewDelegate {
           
     }
     
-    func handleChangeInMoodTime(json: JSON, minIsNowMax: Bool) {
-        if (json == JSON.null) {
+    func convertDataToChartData(retreivedDataEntries: [TimeInterval : Int]) {
+        var dataEntries: [ChartDataEntry] = []
+        
+        for (key, value) in retreivedDataEntries {
+            dataEntries.append(BarChartDataEntry(x: (key - minimumTimestamp!) / (3600 * 24), y: Double(value)))
+        }
+    
+        setUpBarChart(barChartEntries: dataEntries, earlistTimeInRetrievedEntries: minimumTimestamp!)
+    }
+    
+    func handleChangeInMoodTime(json: JSON) {
+        if (json == JSON.null || json["data"].stringValue == "No Valid Data") {
+            print("No valid data to show for request")
+            return
+        }
+        else if (json["data"] == "Request Invalid") {
+            print("Invalid Request")
             return
         }
         
-        print(json["data"])
+        var moodProveData = [TimeInterval : Int]()
         
+        for (_, subJson) in json["data"] {
+            if let timestamp = subJson["timestamp"].int64 {
+                if let moodPrediction = subJson["mood"].int {
+                    moodProveData[TimeInterval(timestamp)] = moodPrediction
+                }
+            }
+        }
         
+        let sortedDictionary = moodProveData.sorted(by: { $0.0.key < $0.1.key })
         
+        maximumTimestamp = sortedDictionary.last?.key
+        minimumTimestamp = sortedDictionary.first?.key
     }
     
     // Could be useful in the future
