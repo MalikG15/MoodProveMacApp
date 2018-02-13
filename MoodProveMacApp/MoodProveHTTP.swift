@@ -12,6 +12,9 @@ import SwiftyJSON
 class MoodProveHTTP: NSObject {
 
     
+    static let moodProveDomain = "http://localhost:8080"
+    
+    static let userLogin = "/user/login?email=%s&password=%s"
     
     static func getRequest(urlRequest: String) -> JSON {
         let url = URL(string: urlRequest)!

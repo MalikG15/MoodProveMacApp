@@ -17,6 +17,10 @@ class MainViewController: NSViewController, ChartViewDelegate {
     
     var maximumTimestamp: TimeInterval?
     
+    var userId: String?
+    
+    var name: String?
+    
     let moodProveServerDomain: String = "http://localhost:8080"
     
     @IBOutlet weak var moodDataChart: BarChartView!
