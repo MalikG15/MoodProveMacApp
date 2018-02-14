@@ -28,6 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 let fbToken = urlString.substring(from: index)
                 SettingsViewController.saveFacebookToken(fbToken: fbToken)
             }
+            NSApp.activate(ignoringOtherApps: true)
             
             /*print(url)
             main = NSStoryboard(name : "Main", bundle: nil).instantiateController(withIdentifier: "OAuthResponseWindow") as! NSWindowController
