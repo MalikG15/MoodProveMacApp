@@ -21,16 +21,31 @@ class MainViewController: NSViewController, ChartViewDelegate {
     
     var name: String?
     
+    var newUser: Bool?
+    
     let moodProveServerDomain: String = "http://localhost:8080"
     
+    @IBOutlet weak var titleOnMainView: NSTextField!
+    
+    @IBOutlet weak var descriptionForCheckIn: NSTextField!
+    
     @IBOutlet weak var moodDataChart: BarChartView!
+    
+    @IBOutlet weak var checkInMood: NSButton!
+    
+    
+    @IBAction func checkIn(_ sender: Any) {
+        
+        
+    }
+    
     
     @IBAction func getPastMoodBefore(_ sender: Any) {
         
         // String(describing: Int(minimumTimestamp!.timeIntervalSince1970))
         let userid = "happy"
         let timestamp = 3
-        let res = MoodProveHTTP.getRequest(urlRequest: "\(moodProveServerDomain)/mood/beforeOrAfter?userid=\(userid)&timestamp=\(minimumTimestamp!)&type=before")
+        let res = MoodProveHTTP.getRequest(urlRequest: "\(moodProveServerDomain)/past/beforeOrAfter?userid=\(userid)&timestamp=\(minimumTimestamp!)&type=before")
             self.handleChangeInMoodTime(json: res)
     }
 
@@ -38,7 +53,7 @@ class MainViewController: NSViewController, ChartViewDelegate {
         // String(describing: Int(minimumTimestamp!.timeIntervalSince1970))
         let userid = "happy"
         let timestamp = 3
-        let res = MoodProveHTTP.getRequest(urlRequest: "\(moodProveServerDomain)/mood/beforeOrAfter?userid=\(userid)&timestamp=\(timestamp)&type=after")
+        let res = MoodProveHTTP.getRequest(urlRequest: "\(moodProveServerDomain)/past/beforeOrAfter?userid=\(userid)&timestamp=\(timestamp)&type=after")
         self.handleChangeInMoodTime(json: res)
     }
     
@@ -47,9 +62,14 @@ class MainViewController: NSViewController, ChartViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        // OAuth Login Sequence Test
-        // oauthLogin();
-        // Getting the current date to create fake data
+        // Check to see how to load the view
+        if (newUser! == true || userHasEnoughMoodHistory()) {
+            titleOnMainView.stringValue = getCheckInTimes()
+            return
+        }
+        
+        checkInMood.isHidden = true
+        descriptionForCheckIn.isHidden = true
         let date = Date()
         minimumTimestamp = date.timeIntervalSince1970
         retrieveBarChartData(currentDate: date.timeIntervalSince1970)
@@ -220,6 +240,28 @@ class MainViewController: NSViewController, ChartViewDelegate {
         
         maximumTimestamp = sortedDictionary.last?.key
         minimumTimestamp = sortedDictionary.first?.key
+    }
+    
+    func userHasEnoughMoodHistory() -> Bool {
+        let path = "/past/check?userid=\(userId!)"
+        print(MoodProveHTTP.moodProveDomain + path)
+        let moodHistory = MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + path)
+        
+        print(moodHistory["data"].stringValue)
+        if (moodHistory["data"].stringValue == "Sufficient") {
+            return false
+        }
+        
+        return true
+    }
+    
+    func getCheckInTimes() -> String {
+        let currentDate: Date = Calendar.current.date(byAdding: .day, value: 0, to: Date())!
+        let path = "/predicted/getCheckInInterval?userid=\(userId!)&timestamp=\(Int64(currentDate.timeIntervalSince1970))"
+        print(MoodProveHTTP.moodProveDomain + path)
+        let moodHistory = MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + path)
+        
+        return moodHistory["checkInInterval"].stringValue
     }
     
     // Could be useful in the future

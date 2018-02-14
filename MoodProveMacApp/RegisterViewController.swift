@@ -11,7 +11,9 @@ import SwiftyJSON
 
 class RegisterViewController: NSViewController {
     
-    let options = ["4:00 AM", "5:00 AM", "6:00 AM", "7:00 AM", "8:00 AM", "9:00 AM", "10:00 AM"]
+    var openMain: NSWindow?
+    
+    let options = ["4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00", "12:00"]
 
     @IBOutlet weak var name: NSTextField!
     
@@ -37,7 +39,7 @@ class RegisterViewController: NSViewController {
             warning.stringValue = "You left required input fields empty!"
             return
         }
-        else if (password != passwordConfirmation) {
+        else if (password.stringValue != passwordConfirmation.stringValue) {
             warning.isHidden = false
             warning.stringValue = "Your passwords do not match!"
             password.stringValue = ""
@@ -45,9 +47,11 @@ class RegisterViewController: NSViewController {
             return
         }
         warning.isHidden = true
+        
         let path = "/user/add?name=\(name.stringValue)&email=\(email.stringValue)&password=\(password.stringValue)&timeOfCheckIn=\(wakeUpTime.titleOfSelectedItem!)"
+        print(MoodProveHTTP.moodProveDomain + path)
         let res = MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + path)
-        handleRegistration(json: res)
+        handleRegistration(json: res, name: name.stringValue)
     }
     
     @IBAction func loginClicked(_ sender: Any) {
@@ -67,18 +71,21 @@ class RegisterViewController: NSViewController {
         wakeUpTime.addItems(withTitles: options)
     }
     
-    func handleRegistration(json: JSON) {
+    func handleRegistration(json: JSON, name: String) {
+        if (json == JSON.null) {
+            return
+        }
         
-        
-        /*let storyboard = NSStoryboard(name: "Main",bundle: nil)
+        let storyboard = NSStoryboard(name: "Main",bundle: nil)
         let mainViewController: MainViewController = storyboard.instantiateController(withIdentifier: "mainView") as! MainViewController
-        mainViewController.userId = json["userid"].stringValue
-        mainViewController.name = json["name"].stringValue
+        mainViewController.userId = json["result"].stringValue
+        mainViewController.name = name
+        mainViewController.newUser = true
         openMain = NSWindow(contentViewController: mainViewController)
         openMain?.makeKeyAndOrderFront(self)
         let vc = NSWindowController(window: openMain)
         vc.showWindow(self)
-        self.view.window?.close()*/
+        self.view.window?.close()
     }
     
 }
