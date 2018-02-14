@@ -1130,6 +1130,7 @@
                         <rect key="contentRect" x="562" y="319" width="994" height="600"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="1000" height="600"/>
+                        <value key="minFullScreenContentSize" type="size" width="994" height="600"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="7JF-NJ-9jn"/>
                         </connections>
@@ -1373,9 +1374,35 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hpn-N3-1zi">
+                                            <rect key="frame" x="778" y="1033" width="362" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="X9i-0D-LvZ"/>
+                                                <constraint firstAttribute="width" constant="358" id="wgd-jL-lt2"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Your Next Mood Check-in Interval Time is:" id="kJA-Zo-qRa">
+                                                <font key="font" size="15" name="Seravek"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pUC-UU-e3E">
+                                            <rect key="frame" x="1769" y="993" width="75" height="65"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="65" id="fjy-eA-N34"/>
+                                                <constraint firstAttribute="width" constant="75" id="qAr-Nh-3QO"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Image" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="VAF-4F-kwQ">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="settings:" target="XfG-lQ-9wD" id="ViB-uS-CQJ"/>
+                                            </connections>
+                                        </button>
                                         <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3hH-rX-Jc7">
-                                            <rect key="frame" x="1234" y="963" width="439" height="32"/>
-                                            <buttonCell key="cell" type="push" title="Tell MoodProve Your Mood!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bmV-DY-9ku">
+                                            <rect key="frame" x="842" y="970" width="235" height="32"/>
+                                            <buttonCell key="cell" type="push" title="The Time is Now to Check In!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bmV-DY-9ku">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -1383,31 +1410,22 @@
                                                 <action selector="checkIn:" target="XfG-lQ-9wD" id="hGW-sO-L8J"/>
                                             </connections>
                                         </button>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hpn-N3-1zi">
-                                            <rect key="frame" x="778" y="1033" width="362" height="25"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="25" id="X9i-0D-LvZ"/>
-                                                <constraint firstAttribute="width" constant="358" id="wgd-jL-lt2"/>
-                                            </constraints>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Your Mood Check-in Interval Time for 7 Days is:" id="kJA-Zo-qRa">
-                                                <font key="font" size="15" name="Seravek"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="WLd-Q4-KeN" secondAttribute="bottom" constant="8" symbolic="YES" id="1AE-ey-lip"/>
+                                        <constraint firstItem="pUC-UU-e3E" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="20" id="2mD-NQ-ndS"/>
                                         <constraint firstAttribute="bottom" secondItem="gv6-JB-f1n" secondAttribute="bottom" constant="46" id="3M2-Go-hnu"/>
                                         <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="IaS-QT-Hit" secondAttribute="bottom" constant="6" id="3Y4-c1-esp"/>
-                                        <constraint firstItem="3hH-rX-Jc7" firstAttribute="leading" secondItem="WLd-Q4-KeN" secondAttribute="trailing" constant="8" id="HyX-cF-GIn"/>
-                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="3hH-rX-Jc7" secondAttribute="bottom" constant="28" id="KGq-b1-3Dt"/>
                                         <constraint firstItem="IaS-QT-Hit" firstAttribute="leading" secondItem="5bX-wX-LSe" secondAttribute="trailing" constant="12" symbolic="YES" id="PT3-K1-JjF"/>
                                         <constraint firstItem="hpn-N3-1zi" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="RyE-TC-4OJ"/>
                                         <constraint firstItem="gv6-JB-f1n" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="Rz8-fC-aoU"/>
+                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="pUC-UU-e3E" secondAttribute="bottom" constant="51" id="SWc-L0-PbL"/>
                                         <constraint firstItem="5bX-wX-LSe" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="92" id="TJ6-kA-99O"/>
+                                        <constraint firstItem="3hH-rX-Jc7" firstAttribute="centerY" secondItem="WLd-Q4-KeN" secondAttribute="centerY" id="TN1-Cy-1g9"/>
                                         <constraint firstItem="WLd-Q4-KeN" firstAttribute="top" secondItem="hpn-N3-1zi" secondAttribute="bottom" constant="8" id="VQN-oU-dLf"/>
                                         <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="136" id="ZR2-DP-2jd"/>
+                                        <constraint firstAttribute="trailing" secondItem="pUC-UU-e3E" secondAttribute="trailing" constant="74" id="a2C-lO-IVn"/>
+                                        <constraint firstItem="3hH-rX-Jc7" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="700" id="biA-T5-Fih"/>
                                         <constraint firstItem="IaS-QT-Hit" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="161" id="bpo-r2-RWe"/>
                                         <constraint firstItem="gv6-JB-f1n" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="74" id="cQz-6N-oZa"/>
                                         <constraint firstItem="5bX-wX-LSe" firstAttribute="baseline" secondItem="IaS-QT-Hit" secondAttribute="baseline" id="ckD-PM-j6V"/>
@@ -1433,6 +1451,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Image" width="409.60000610351562" height="409.60000610351562"/>
         <image name="MoodProveQuality" width="876" height="184"/>
     </resources>
 </document>

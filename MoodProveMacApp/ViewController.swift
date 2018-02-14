@@ -25,6 +25,7 @@ class MainViewController: NSViewController, ChartViewDelegate {
     
     let moodProveServerDomain: String = "http://localhost:8080"
     
+    
     @IBOutlet weak var titleOnMainView: NSTextField!
     
     @IBOutlet weak var descriptionForCheckIn: NSTextField!
@@ -32,6 +33,11 @@ class MainViewController: NSViewController, ChartViewDelegate {
     @IBOutlet weak var moodDataChart: BarChartView!
     
     @IBOutlet weak var checkInMood: NSButton!
+    
+    @IBAction func settings(_ sender: Any) {
+        
+        print("hello")
+    }
     
     
     @IBAction func checkIn(_ sender: Any) {
@@ -64,7 +70,16 @@ class MainViewController: NSViewController, ChartViewDelegate {
         
         // Check to see how to load the view
         if (newUser! == true || userHasEnoughMoodHistory()) {
+            let response = getCheckInTimes()
+            if (response == "Now") {
+                titleOnMainView.isHidden = true
+                descriptionForCheckIn.isHidden = true
+            }
+            else {
+                checkInMood.isHidden = true
+            }
             titleOnMainView.stringValue = getCheckInTimes()
+            descriptionForCheckIn.stringValue = "\(name!)'s Next Check-In with MoodProve is:"
             return
         }
         

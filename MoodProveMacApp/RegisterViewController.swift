@@ -13,7 +13,7 @@ class RegisterViewController: NSViewController {
     
     var openMain: NSWindow?
     
-    let options = ["4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00", "12:00"]
+    let options = ["4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00", "00:00"]
 
     @IBOutlet weak var name: NSTextField!
     
