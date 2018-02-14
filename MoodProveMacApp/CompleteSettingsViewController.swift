@@ -10,32 +10,8 @@ import Cocoa
 import SwiftyJSON
 
 class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
-
-    @IBAction func authenticateGoogle(_ sender: Any) {
-        
-    }
     
-    @IBOutlet weak var unratedEvents: NSTableView!
-    
-    @IBOutlet weak var rateSlider: NSSlider!
-    
-    @IBOutlet weak var rateIndicator: NSTextField!
-    
-    @IBAction func rate(_ sender: Any) {
-        let splittedNumArray = rateSlider.stringValue.components(separatedBy: ".")
-        rateIndicator.stringValue = "\(splittedNumArray[0])"
-    }
-    
-    // Should be optional
-    var userId: String = "4b107e32-0a2d-46ee-970b-4331ecd8eca5"
-    
-    var eventDescriptions: [String] = [String]()
-    
-    var eventTitles: [String] = [String]()
-    
-    var eventIds: [String] = [String]()
-    
-    var eventDates: [Int64] = [Int64]()
+    // MARK: - Application functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +24,45 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
         rateIndicator.isHidden = true
         rateSlider.isHidden = true
     }
+    
+    // MARK: - Buttons
+    
+    // MARK: - Tables
+    
+    @IBOutlet weak var unratedEvents: NSTableView!
+    
+    // MARK: - Sliders
+    
+    @IBOutlet weak var rateSlider: NSSlider!
+
+    // MARK: - labels
+    
+    @IBOutlet weak var rateIndicator: NSTextField!
+    
+    // MARK: - Function outlets
+    
+    @IBAction func authenticateGoogle(_ sender: Any) {
+        authenticateWithGoogle()
+    }
+    
+    @IBAction func rate(_ sender: Any) {
+        let splittedNumArray = rateSlider.stringValue.components(separatedBy: ".")
+        rateIndicator.stringValue = "\(splittedNumArray[0])"
+    }
+    
+    // MARK: - Member Variables
+    
+    var userId: String = "4b107e32-0a2d-46ee-970b-4331ecd8eca5"
+    
+    var eventDescriptions: [String] = [String]()
+    
+    var eventTitles: [String] = [String]()
+    
+    var eventIds: [String] = [String]()
+    
+    var eventDates: [Int64] = [Int64]()
+    
+    // MARK: - HTTP Call Methods
     
     func getAndDisplayUnratedEvents() {
         let path = "/event/unratedevents?userid=\(userId)"
@@ -66,6 +81,15 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
             }
         }
         
+    }
+    
+    func authenticateWithGoogle() {
+        let response: JSON = MoodProveHTTP.getRequest(urlRequest: "http://localhost:8080/auth/google?userid=\(userId)")
+        if let urlForAuthentication = response["Response"].string {
+            if let url = URL(string: urlForAuthentication), NSWorkspace.shared().open(url) {
+                print("Opening in default web browser...")
+            }
+        }
     }
     
     // MARK: - Table Implementation
@@ -124,13 +148,5 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
         }
     }
     
-    func authenticateWithGoogle() {
-        let response: JSON = MoodProveHTTP.getRequest(urlRequest: "http://localhost:8080/auth/google?userid=\(userId)")
-        if let urlForAuthentication = response["Response"].string {
-            if let url = URL(string: urlForAuthentication), NSWorkspace.shared().open(url) {
-                print("Opening in default web browser...")
-            }
-        }
-    }
     
 }
