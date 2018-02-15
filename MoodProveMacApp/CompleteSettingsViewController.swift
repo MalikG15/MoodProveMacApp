@@ -69,11 +69,11 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
         let response = MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + path)
         
         for (_, json) in response["events"] {
-            print("here")
             eventIds.append(json["eventid"].stringValue)
             eventTitles.append(json["eventTitle"].stringValue)
             eventDescriptions.append(json["eventDescription"].stringValue)
             if let date = json["date"].int64 {
+                print("here")
                 eventDates.append(date)
             }
             else {
@@ -142,7 +142,8 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
                 getAndDisplayUnratedEvents()
                 unratedEvents.reloadData()
                 
-                let path = "event/rate?userid=\(userId)&eventid=\(selectedId)&date=\(date)&rate=\(rate)"
+                
+                let path = "/event/rate?userid=\(userId)&eventid=\(selectedId)&date=\(date)&rating=\(rate)"
                 MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + path)
             }
         }

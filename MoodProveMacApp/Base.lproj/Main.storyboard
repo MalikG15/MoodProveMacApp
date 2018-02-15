@@ -1429,7 +1429,6 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="authenticateGoogle" destination="r7t-so-pgL" id="i95-gc-eqd"/>
                         <outlet property="rateIndicator" destination="K4u-Y6-b5A" id="lEd-fI-sRW"/>
                         <outlet property="rateSlider" destination="i8J-Pt-TlV" id="qZx-AD-C6T"/>
                         <outlet property="unratedEvents" destination="f6K-3m-HhA" id="epO-6W-QxZ"/>
