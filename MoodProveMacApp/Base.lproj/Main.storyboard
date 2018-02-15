@@ -1421,6 +1421,26 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yyC-Rg-BsM">
+                                            <rect key="frame" x="621" y="306" width="337" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="List Unrated Events" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="D21-uz-BgO">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="justAuthenticateWithGoogleAction:" target="J12-XL-ShD" id="6x4-cb-G8i"/>
+                                            </connections>
+                                        </button>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EdL-eJ-CTT">
+                                            <rect key="frame" x="625" y="329" width="329" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Authenticated with Google? Click Below to Pull Up Unrated Events" id="Xrg-bt-Vd4">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                 </view>
                                 <color key="borderColor" red="0.047058824450000002" green="0.91372549530000002" blue="0.3058823645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1429,6 +1449,8 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="justAuthenticatedWithGoogle" destination="EdL-eJ-CTT" id="p0S-z1-kiT"/>
+                        <outlet property="justAuthenticatedWithGoogleButton" destination="yyC-Rg-BsM" id="mFK-fA-c0U"/>
                         <outlet property="rateIndicator" destination="K4u-Y6-b5A" id="lEd-fI-sRW"/>
                         <outlet property="rateSlider" destination="i8J-Pt-TlV" id="qZx-AD-C6T"/>
                         <outlet property="unratedEvents" destination="f6K-3m-HhA" id="epO-6W-QxZ"/>

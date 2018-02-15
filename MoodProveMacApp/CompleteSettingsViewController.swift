@@ -30,14 +30,35 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
         // Do view setup here.
         
         // Get unrated events
-        authenticateWithGoogle()
-        getAndDisplayUnratedEvents()
+        // authenticateWithGoogle()
         
+        
+        // Hiding table slider components
         rateIndicator.isHidden = true
         rateSlider.isHidden = true
+        
+        // Hiding manual button for Google authentication
+        if (isAuthenticatedWithGoogle()) {
+            justAuthenticatedWithGoogleButton.isHidden = true
+            justAuthenticatedWithGoogle.isHidden = true
+            getAndDisplayUnratedEvents()
+        }
     }
     
     // MARK: - Buttons
+    
+    @IBOutlet weak var justAuthenticatedWithGoogleButton: NSButton!
+    
+    @IBAction func justAuthenticateWithGoogleAction(_ sender: Any) {
+        let prevSize = eventTitles.count
+        getAndDisplayUnratedEvents()
+        unratedEvents.reloadData()
+        let curSize = eventTitles.count
+        if (prevSize != curSize) {
+            justAuthenticatedWithGoogleButton.isHidden = true
+            justAuthenticatedWithGoogle.isHidden = true
+        }
+    }
     
     // MARK: - Tables
     
@@ -48,6 +69,8 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
     @IBOutlet weak var rateSlider: NSSlider!
 
     // MARK: - labels
+    
+    @IBOutlet weak var justAuthenticatedWithGoogle: NSTextField!
     
     @IBOutlet weak var rateIndicator: NSTextField!
     
@@ -83,6 +106,7 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
         
     }
     
+    // Completing authentication
     func authenticateWithGoogle() {
         let response: JSON = MoodProveHTTP.getRequest(urlRequest: "http://localhost:8080/auth/google?userid=\(userId)")
         if let urlForAuthentication = response["Response"].string {
@@ -90,6 +114,16 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
                 print("Opening in default web browser...")
             }
         }
+    }
+    
+    // Ask if user is authenticated
+    func isAuthenticatedWithGoogle() -> Bool {
+        let response: JSON = MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + "/auth/checkAuthWithGoogle?userid=\(userId)")
+        if response["Result"] == "true" {
+            return true
+        }
+        
+        return false
     }
     
     // MARK: - Table Implementation
