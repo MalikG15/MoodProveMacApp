@@ -11,6 +11,18 @@ import SwiftyJSON
 
 class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
     
+    // MARK: - Member Variables
+    
+    var userId: String = "4b107e32-0a2d-46ee-970b-4331ecd8eca5"
+    
+    var eventDescriptions: [String] = [String]()
+    
+    var eventTitles: [String] = [String]()
+    
+    var eventIds: [String] = [String]()
+    
+    var eventDates: [Int64] = [Int64]()
+    
     // MARK: - Application functions
     
     override func viewDidLoad() {
@@ -49,18 +61,6 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
         let splittedNumArray = rateSlider.stringValue.components(separatedBy: ".")
         rateIndicator.stringValue = "\(splittedNumArray[0])"
     }
-    
-    // MARK: - Member Variables
-    
-    var userId: String = "4b107e32-0a2d-46ee-970b-4331ecd8eca5"
-    
-    var eventDescriptions: [String] = [String]()
-    
-    var eventTitles: [String] = [String]()
-    
-    var eventIds: [String] = [String]()
-    
-    var eventDates: [Int64] = [Int64]()
     
     // MARK: - HTTP Call Methods
     
@@ -138,12 +138,15 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
                 eventDates.remove(at: unratedEvents.selectedRow)
                 eventIds.remove(at: unratedEvents.selectedRow)
             
+            
+                
                 // Retrieve and set the new data
-                getAndDisplayUnratedEvents()
+                // getAndDisplayUnratedEvents()
                 unratedEvents.reloadData()
                 
                 
                 let path = "/event/rate?userid=\(userId)&eventid=\(selectedId)&date=\(date)&rating=\(rate)"
+                print(MoodProveHTTP.moodProveDomain + path)
                 MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + path)
             }
         }
