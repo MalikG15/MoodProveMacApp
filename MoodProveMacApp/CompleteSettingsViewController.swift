@@ -8,8 +8,10 @@
 
 import Cocoa
 import SwiftyJSON
+import CoreLocation
+import OAuthSwift
 
-class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
+class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, CLLocationManagerDelegate {
     
     // MARK: - Member Variables
     
@@ -23,11 +25,24 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
     
     var eventDates: [Int64] = [Int64]()
     
+    var locationManager: CLLocationManager!
+    
     // MARK: - Application functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        
+        // Check if token was saved, if yes delete
+        if let fbToken = UserDefaults.standard.string(forKey: "fbToken") {
+            // Some String Value
+            saveFacebookToken(fbToken: fbToken)
+            UserDefaults.standard.removeObject(forKey: "fbToken")
+        }
+        // Check if userId was saved, if yes delete
+        if let _ = UserDefaults.standard.string(forKey: "userid") {
+            UserDefaults.standard.removeObject(forKey: "userid")
+        }
         
         // Get unrated events
         // authenticateWithGoogle()
@@ -49,17 +64,6 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
     
     @IBOutlet weak var justAuthenticatedWithGoogleButton: NSButton!
     
-    @IBAction func justAuthenticateWithGoogleAction(_ sender: Any) {
-        let prevSize = eventTitles.count
-        getAndDisplayUnratedEvents()
-        unratedEvents.reloadData()
-        let curSize = eventTitles.count
-        if (prevSize != curSize) {
-            justAuthenticatedWithGoogleButton.isHidden = true
-            justAuthenticatedWithGoogle.isHidden = true
-        }
-    }
-    
     // MARK: - Tables
     
     @IBOutlet weak var unratedEvents: NSTableView!
@@ -76,8 +80,69 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
     
     // MARK: - Function outlets
     
+    @IBAction func authenticateLocation(_ sender: Any) {
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        if CLLocationManager.locationServicesEnabled() {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .notDetermined, .restricted, .denied:
+                print("No access")
+                locationManager.startUpdatingLocation()
+            case .authorizedAlways, .authorizedWhenInUse:
+                print("Access")
+                //print(locationManager.location!.coordinate.latitude)
+                break
+                
+            }
+        } else {
+            print("Location services are not enabled")
+        }
+    }
+    
+    @IBAction func authenticateWithFacebook(_ sender: Any) {
+        if (isAuthenticatedWithFacebook()) {
+            return
+        }
+        
+        let defaults = UserDefaults.standard
+        defaults.set(userId, forKey: "userid")
+        let oauthswift = OAuth2Swift(
+            consumerKey:    MoodProveAPIKeys.FacebookClientID,
+            consumerSecret: MoodProveAPIKeys.FacebookClientSecret,
+            authorizeUrl:   "https://www.facebook.com/dialog/oauth",
+            accessTokenUrl: "https://graph.facebook.com/oauth/access_token",
+            responseType:   "code"
+        )
+        
+        //self.oauthswift = oauthswift
+        //oauthswift.authorizeURLHandler = getURLHandler()
+        let state = generateState(withLength: 20)
+        let _ = oauthswift.authorize(
+            withCallbackURL: URL(string: "http://localhost:8080/auth/facebook")!, scope: "public_profile user_posts", state: state,
+            success: { credential, response, parameters in
+                //self.showTokenAlert(name: serviceParameters["name"], credential: credential)
+                //self.testFacebook(oauthswift)
+        }, failure: { error in
+            print(error.localizedDescription, terminator: "")
+        }
+        )
+        
+         self.view.window?.close()
+    }
+    
     @IBAction func authenticateGoogle(_ sender: Any) {
         authenticateWithGoogle()
+    }
+    
+    @IBAction func justAuthenticateWithGoogleAction(_ sender: Any) {
+        let prevSize = eventTitles.count
+        getAndDisplayUnratedEvents()
+        unratedEvents.reloadData()
+        let curSize = eventTitles.count
+        if (prevSize != curSize) {
+            justAuthenticatedWithGoogleButton.isHidden = true
+            justAuthenticatedWithGoogle.isHidden = true
+        }
     }
     
     @IBAction func rate(_ sender: Any) {
@@ -126,6 +191,20 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
         return false
     }
     
+    func isAuthenticatedWithFacebook() -> Bool {
+        let response: JSON = MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + "/auth/checkAuthWithFacebook?userid=\(userId)")
+        if response["Result"] == "true" {
+            return true
+        }
+        
+        return false
+    }
+    
+    func saveFacebookToken(fbToken: String) {
+        // pull up userId from storage
+        let response = MoodProveHTTP.getRequest(urlRequest: "http://localhost:8080/auth/facebook/saveToken?userid=\(userId)&token=\(fbToken)")
+    }
+    
     // MARK: - Table Implementation
     
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -156,6 +235,16 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
     func tableViewSelectionDidChange(_ notification: Notification) {
         rateIndicator.isHidden = false
         rateSlider.isHidden = false
+    }
+    
+    // MARK: - Location Functions
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        var currentLocation = locations[locations.count - 1]
+        print("running to save location")
+        let latitude = locationManager.location!.coordinate.latitude
+        let longitude = locationManager.location!.coordinate.longitude
+        MoodProveHTTP.getRequest(urlRequest: "http://localhost:8080/user/location?userid=\(userId)&latitude=\(latitude)&longitude=\(longitude)")
     }
     
     override func keyDown(with event: NSEvent) {

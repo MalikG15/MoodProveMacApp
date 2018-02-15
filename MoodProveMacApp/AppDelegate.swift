@@ -12,7 +12,7 @@ import OAuthSwift
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-     var main: NSWindowController!
+     var completeSettingsWindow: NSWindowController!
 
     func applicationDidFinishLaunching(_ aNotification: NSNotification) {
         NSAppleEventManager.shared().setEventHandler(self, andSelector:#selector(AppDelegate.handleGetURL(event:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
@@ -23,18 +23,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             var urlString = String(describing: url)
             let countOfBaseUrl = "lawrence.moodprovemacapp://".characters.count
+            
             if (urlString.characters.count > countOfBaseUrl) {
                 let index = urlString.index(urlString.startIndex, offsetBy: countOfBaseUrl)
                 let fbToken = urlString.substring(from: index)
-                SettingsViewController.saveFacebookToken(fbToken: fbToken)
+                
+                // Saving facebook token locally
+                // then retrieving it when CompleteSettings is
+                // recreated and setting userId when the window is reloaded too
+                let defaults = UserDefaults.standard
+                defaults.set(fbToken, forKey: "fbToken")
+                completeSettingsWindow = NSStoryboard(name : "Main", bundle: nil).instantiateController(withIdentifier: "completeSettingsWindow") as! CompleteSettingsWindowController
+                let completeSettingsView = NSStoryboard(name:"Main", bundle: nil).instantiateController(withIdentifier: "completeSettingsView") as! CompleteSettingsViewController
+                if let userId = defaults.string(forKey: "userid") {
+                    completeSettingsView.userId = userId
+                }
+                completeSettingsWindow.window?.contentViewController = completeSettingsView
+                completeSettingsWindow.window?.makeKeyAndOrderFront(nil)
+                
+    
             }
             NSApp.activate(ignoringOtherApps: true)
             
-            /*print(url)
-            main = NSStoryboard(name : "Main", bundle: nil).instantiateController(withIdentifier: "OAuthResponseWindow") as! NSWindowController
-            let mainVc = NSStoryboard(name:"Main", bundle: nil).instantiateController(withIdentifier: "OAuthResponseView") as! NSViewController
-            main.window?.contentViewController = mainVc
-            main.window?.makeKeyAndOrderFront(nil)*/
+            
         }
     }
 

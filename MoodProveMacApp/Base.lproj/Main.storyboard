@@ -1030,7 +1030,7 @@
         <!--Window Controller-->
         <scene sceneID="ADW-qe-rbn">
             <objects>
-                <windowController id="hjn-dV-wDk" customClass="CompleteSettingsWindowController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="completeSettingsWindow" id="hjn-dV-wDk" customClass="CompleteSettingsWindowController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="FMj-La-a25">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -1050,7 +1050,7 @@
         <!--Complete Settings View Controller-->
         <scene sceneID="bW8-da-XHb">
             <objects>
-                <viewController id="J12-XL-ShD" customClass="CompleteSettingsViewController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="completeSettingsView" id="J12-XL-ShD" customClass="CompleteSettingsViewController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="vL1-Fq-49W">
                         <rect key="frame" x="0.0" y="0.0" width="1021" height="808"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1198,6 +1198,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="authenticateWithFacebook:" target="J12-XL-ShD" id="KsN-98-UBA"/>
+                                            </connections>
                                         </button>
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W1N-v4-qIN">
                                             <rect key="frame" x="428" y="629" width="176" height="32"/>
@@ -1269,6 +1272,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="authenticateLocation:" target="J12-XL-ShD" id="4MX-s7-z8j"/>
+                                            </connections>
                                         </button>
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cfO-2b-Oli">
                                             <rect key="frame" x="100" y="529" width="107" height="32"/>
