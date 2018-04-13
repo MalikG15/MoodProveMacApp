@@ -23,6 +23,8 @@ class MainViewController: NSViewController, ChartViewDelegate {
     
     var newUser: Bool?
     
+    var openAnotherWindow: NSWindow?
+    
     let moodProveServerDomain: String = "http://localhost:8080"
     
     
@@ -35,8 +37,13 @@ class MainViewController: NSViewController, ChartViewDelegate {
     @IBOutlet weak var checkInMood: NSButton!
     
     @IBAction func settings(_ sender: Any) {
-        
-        print("hello")
+        let storyboard = NSStoryboard(name: "Main",bundle: nil)
+        let completeSettingsViewController: CompleteSettingsViewController = storyboard.instantiateController(withIdentifier: "completeSettingsView") as! CompleteSettingsViewController
+        completeSettingsViewController.userId = userId!
+        openAnotherWindow = NSWindow(contentViewController: completeSettingsViewController)
+        openAnotherWindow?.makeKeyAndOrderFront(self)
+        let vc = NSWindowController(window: openAnotherWindow)
+        vc.showWindow(self)
     }
     
     
@@ -67,6 +74,15 @@ class MainViewController: NSViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        if (userId == "a364760a-f926-4a6e-bf89-f60e1f531191") {
+            // fill table
+            titleOnMainView.stringValue = "Malik's Mood Predictions!"
+            descriptionForCheckIn.isHidden = true
+            checkInMood.isHidden = true
+            customFillTable()
+            return
+        }
         
         // Check to see how to load the view
         if (newUser! == true || userHasEnoughMoodHistory()) {
@@ -106,7 +122,7 @@ class MainViewController: NSViewController, ChartViewDelegate {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .none
-        formatter.dateFormat = "MMM dd, yyyy"
+        formatter.dateFormat = "EE MMM dd, yyyy"
         formatter.locale = Locale.current
         
         // Set up xValuesFormatter for the chart
@@ -119,13 +135,13 @@ class MainViewController: NSViewController, ChartViewDelegate {
         
         
         let barChartDataSet = BarChartDataSet(values: barChartEntries, label: nil)
-        barChartDataSet.colors = [NSUIColor.magenta]
+        barChartDataSet.colors = [NSUIColor.cyan]
         let data = BarChartData(dataSets: [barChartDataSet])
         moodDataChart.data = data
         
         
         moodDataChart.leftAxis.axisMinimum = 0
-        moodDataChart.leftAxis.axisMaximum = 63
+        moodDataChart.leftAxis.axisMaximum = 70
         
         // Allow users to see a bar cell highlighted when tapped.
         moodDataChart.highlightPerTapEnabled = true
@@ -152,13 +168,14 @@ class MainViewController: NSViewController, ChartViewDelegate {
         moodDataChart.setScaleEnabled(false)
         
         let limitLinesValues: [Double] = [0, 10, 20, 30, 40, 50, 60]
-        let limitLinesColors: [NSUIColor] = [NSUIColor.black, NSUIColor.brown, NSUIColor.blue, NSUIColor.cyan, NSUIColor.yellow,
-                                             NSUIColor.green, NSUIColor.purple]
+        let limitLinesNames: [String] = ["angry", "happy", "sad", "anxious", "confused", "calm", "nervous"]
+        //let limitLinesColors: [NSUIColor] = [NSUIColor.black, NSUIColor.brown, NSUIColor.blue, NSUIColor.cyan, NSUIColor.yellow,
+                                            // NSUIColor.green, NSUIColor.purple]
         for k:Int in 0 ..< limitLinesValues.count {
             let limitLine = ChartLimitLine()
-            limitLine.lineColor = limitLinesColors[k]
+            limitLine.lineColor = NSUIColor.black
             limitLine.limit = limitLinesValues[k]
-            limitLine.label = "Mood"
+            limitLine.label = limitLinesNames[k]
             limitLine.lineWidth = 2.0
             moodDataChart.leftAxis.addLimitLine(limitLine)
             
@@ -277,6 +294,34 @@ class MainViewController: NSViewController, ChartViewDelegate {
         let moodHistory = MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + path)
         
         return moodHistory["checkInInterval"].stringValue
+    }
+    
+    func customFillTable() {
+        let path = "/predicted/get?userid=\(userId!)"
+        let response = MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + path)
+        
+        var moodProveData = [TimeInterval : Int]()
+        
+        for (_, subJson) in response["predictions"] {
+            if let timestamp = subJson["timestamp"].int64 {
+                if let moodPrediction = subJson["prediction"].int {
+                    moodProveData[TimeInterval(timestamp)] = moodPrediction
+                }
+            }
+        }
+        
+        let sortedDictionary = moodProveData.sorted(by: { $0.0.key < $0.1.key })
+        
+        maximumTimestamp = sortedDictionary.last?.key
+        minimumTimestamp = sortedDictionary.first?.key
+        
+        var dataEntries: [ChartDataEntry] = []
+        
+        for (key, value) in moodProveData {
+            dataEntries.append(BarChartDataEntry(x: (key - minimumTimestamp!) / (3600 * 24), y: Double(value)))
+        }
+        
+        setUpBarChart(barChartEntries: dataEntries, earlistTimeInRetrievedEntries: minimumTimestamp!)
     }
     
     // Could be useful in the future

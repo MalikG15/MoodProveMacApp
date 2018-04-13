@@ -15,7 +15,7 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
     
     // MARK: - Member Variables
     
-    var userId: String = "4b107e32-0a2d-46ee-970b-4331ecd8eca5"
+    var userId: String?
     
     var eventDescriptions: [String] = [String]()
     
@@ -27,22 +27,26 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
     
     var locationManager: CLLocationManager!
     
+    var oauthswift: OAuth2Swift?
+    
     // MARK: - Application functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         
+
         // Check if token was saved, if yes delete
-        if let fbToken = UserDefaults.standard.string(forKey: "fbToken") {
+        /* if let fbToken = UserDefaults.standard.string(forKey: "fbToken") {
             // Some String Value
             saveFacebookToken(fbToken: fbToken)
             UserDefaults.standard.removeObject(forKey: "fbToken")
+            UserDefaults.standard.removeObject(forKey: "userid")
         }
         // Check if userId was saved, if yes delete
         if let _ = UserDefaults.standard.string(forKey: "userid") {
             UserDefaults.standard.removeObject(forKey: "userid")
-        }
+        } */
         
         // Get unrated events
         // authenticateWithGoogle()
@@ -53,6 +57,7 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
         rateSlider.isHidden = true
         
         // Hiding manual button for Google authentication
+        //print(userId! + " authenticating with Google")
         if (isAuthenticatedWithGoogle()) {
             justAuthenticatedWithGoogleButton.isHidden = true
             justAuthenticatedWithGoogle.isHidden = true
@@ -100,13 +105,14 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
     }
     
     @IBAction func authenticateWithFacebook(_ sender: Any) {
-        if (isAuthenticatedWithFacebook()) {
+        /*if (isAuthenticatedWithFacebook()) {
             return
-        }
+        }*/
+        
         
         let defaults = UserDefaults.standard
-        defaults.set(userId, forKey: "userid")
-        let oauthswift = OAuth2Swift(
+        defaults.set(userId!, forKey: "userid")
+        oauthswift = OAuth2Swift(
             consumerKey:    MoodProveAPIKeys.FacebookClientID,
             consumerSecret: MoodProveAPIKeys.FacebookClientSecret,
             authorizeUrl:   "https://www.facebook.com/dialog/oauth",
@@ -114,20 +120,34 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
             responseType:   "code"
         )
         
-        //self.oauthswift = oauthswift
-        //oauthswift.authorizeURLHandler = getURLHandler()
-        let state = generateState(withLength: 20)
+        self.oauthswift?.allowMissingStateCheck = true
+       /* let state = generateState(withLength: 20)
         let _ = oauthswift.authorize(
             withCallbackURL: URL(string: "http://localhost:8080/auth/facebook")!, scope: "public_profile user_posts", state: state,
             success: { credential, response, parameters in
-                //self.showTokenAlert(name: serviceParameters["name"], credential: credential)
-                //self.testFacebook(oauthswift)
+                // Do things
+                print("hellooooooooooooooooo")
+        }, failure: { error in
+            print(error.localizedDescription, terminator: "")
+        }
+        )*/
+        
+        let state = generateState(withLength: 20)
+        let _ = oauthswift!.authorize(
+            withCallbackURL: URL(string: "http://localhost:8080/auth/redirect")!, scope: "public_profile user_posts", state: state,
+            success: { credential, response, parameters in
+                // Do things
+                print("testing")
+                print(credential.oauthToken)
+                print(credential.oauthTokenExpiresAt)
         }, failure: { error in
             print(error.localizedDescription, terminator: "")
         }
         )
         
-         self.view.window?.close()
+        
+        
+        // self.view.window?.close()
     }
     
     @IBAction func authenticateGoogle(_ sender: Any) {
@@ -153,7 +173,7 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
     // MARK: - HTTP Call Methods
     
     func getAndDisplayUnratedEvents() {
-        let path = "/event/unratedevents?userid=\(userId)"
+        let path = "/event/unratedevents?userid=\(userId!)"
         let response = MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + path)
         
         for (_, json) in response["events"] {
@@ -173,7 +193,7 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
     
     // Completing authentication
     func authenticateWithGoogle() {
-        let response: JSON = MoodProveHTTP.getRequest(urlRequest: "http://localhost:8080/auth/google?userid=\(userId)")
+        let response: JSON = MoodProveHTTP.getRequest(urlRequest: "http://localhost:8080/auth/google?userid=\(userId!)")
         if let urlForAuthentication = response["Response"].string {
             if let url = URL(string: urlForAuthentication), NSWorkspace.shared().open(url) {
                 print("Opening in default web browser...")
@@ -183,7 +203,7 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
     
     // Ask if user is authenticated
     func isAuthenticatedWithGoogle() -> Bool {
-        let response: JSON = MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + "/auth/checkAuthWithGoogle?userid=\(userId)")
+        let response: JSON = MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + "/auth/checkAuthWithGoogle?userid=\(userId!)")
         if response["Result"] == "true" {
             return true
         }
@@ -192,7 +212,7 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
     }
     
     func isAuthenticatedWithFacebook() -> Bool {
-        let response: JSON = MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + "/auth/checkAuthWithFacebook?userid=\(userId)")
+        let response: JSON = MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + "/auth/checkAuthWithFacebook?userid=\(userId!)")
         if response["Result"] == "true" {
             return true
         }
@@ -202,7 +222,7 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
     
     func saveFacebookToken(fbToken: String) {
         // pull up userId from storage
-        let response = MoodProveHTTP.getRequest(urlRequest: "http://localhost:8080/auth/facebook/saveToken?userid=\(userId)&token=\(fbToken)")
+        let response = MoodProveHTTP.getRequest(urlRequest: "http://localhost:8080/auth/facebook/saveToken?userid=\(userId!)&token=\(fbToken)")
     }
     
     // MARK: - Table Implementation
@@ -244,7 +264,7 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
         print("running to save location")
         let latitude = locationManager.location!.coordinate.latitude
         let longitude = locationManager.location!.coordinate.longitude
-        MoodProveHTTP.getRequest(urlRequest: "http://localhost:8080/user/location?userid=\(userId)&latitude=\(latitude)&longitude=\(longitude)")
+        MoodProveHTTP.getRequest(urlRequest: "http://localhost:8080/user/location?userid=\(userId!)&latitude=\(latitude)&longitude=\(longitude)")
     }
     
     override func keyDown(with event: NSEvent) {
