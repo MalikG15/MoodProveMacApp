@@ -35,29 +35,14 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
         super.viewDidLoad()
         // Do view setup here.
         
-
-        // Check if token was saved, if yes delete
-        /* if let fbToken = UserDefaults.standard.string(forKey: "fbToken") {
-            // Some String Value
-            saveFacebookToken(fbToken: fbToken)
-            UserDefaults.standard.removeObject(forKey: "fbToken")
-            UserDefaults.standard.removeObject(forKey: "userid")
-        }
-        // Check if userId was saved, if yes delete
-        if let _ = UserDefaults.standard.string(forKey: "userid") {
-            UserDefaults.standard.removeObject(forKey: "userid")
-        } */
-        
         // Get unrated events
         // authenticateWithGoogle()
-        
         
         // Hiding table slider components
         rateIndicator.isHidden = true
         rateSlider.isHidden = true
         
         // Hiding manual button for Google authentication
-        //print(userId! + " authenticating with Google")
         if (isAuthenticatedWithGoogle()) {
             justAuthenticatedWithGoogleButton.isHidden = true
             justAuthenticatedWithGoogle.isHidden = true
@@ -110,8 +95,6 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
         }*/
         
         
-        let defaults = UserDefaults.standard
-        defaults.set(userId!, forKey: "userid")
         oauthswift = OAuth2Swift(
             consumerKey:    MoodProveAPIKeys.FacebookClientID,
             consumerSecret: MoodProveAPIKeys.FacebookClientSecret,
@@ -121,25 +104,14 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
         )
         
         self.oauthswift?.allowMissingStateCheck = true
-       /* let state = generateState(withLength: 20)
-        let _ = oauthswift.authorize(
-            withCallbackURL: URL(string: "http://localhost:8080/auth/facebook")!, scope: "public_profile user_posts", state: state,
-            success: { credential, response, parameters in
-                // Do things
-                print("hellooooooooooooooooo")
-        }, failure: { error in
-            print(error.localizedDescription, terminator: "")
-        }
-        )*/
         
         let state = generateState(withLength: 20)
         let _ = oauthswift!.authorize(
             withCallbackURL: URL(string: "http://localhost:8080/auth/redirect")!, scope: "public_profile user_posts", state: state,
             success: { credential, response, parameters in
                 // Do things
-                print("testing")
                 print(credential.oauthToken)
-                print(credential.oauthTokenExpiresAt)
+                self.saveFacebookToken(fbToken: credential.oauthToken)
         }, failure: { error in
             print(error.localizedDescription, terminator: "")
         }

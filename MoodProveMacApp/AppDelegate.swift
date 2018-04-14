@@ -20,7 +20,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func handleGetURL(event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
         if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue, let url = URL(string: urlString) {
-            print(urlString)
             OAuthSwift.handle(url: url)
         }
     }

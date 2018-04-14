@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G18013" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="GPo-ft-lMf">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G18013" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="IV4-fn-JnJ">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
@@ -751,8 +751,8 @@
                                     <action selector="registerClicked:" target="GPo-ft-lMf" id="cSa-ba-ATr"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CnJ-bw-ck9">
-                                <rect key="frame" x="99" y="65" width="303" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CnJ-bw-ck9">
+                                <rect key="frame" x="104" y="65" width="292" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Don't Have an Account? Click Below to Register" id="ChT-dx-bd5">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1591,6 +1591,7 @@
                                         <constraint firstItem="pUC-UU-e3E" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="20" id="2mD-NQ-ndS"/>
                                         <constraint firstAttribute="bottom" secondItem="gv6-JB-f1n" secondAttribute="bottom" constant="46" id="3M2-Go-hnu"/>
                                         <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="IaS-QT-Hit" secondAttribute="bottom" constant="6" id="3Y4-c1-esp"/>
+                                        <constraint firstItem="3hH-rX-Jc7" firstAttribute="centerX" secondItem="WLd-Q4-KeN" secondAttribute="centerX" id="NlC-hY-odZ"/>
                                         <constraint firstItem="IaS-QT-Hit" firstAttribute="leading" secondItem="5bX-wX-LSe" secondAttribute="trailing" constant="12" symbolic="YES" id="PT3-K1-JjF"/>
                                         <constraint firstItem="hpn-N3-1zi" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="RyE-TC-4OJ"/>
                                         <constraint firstItem="gv6-JB-f1n" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="Rz8-fC-aoU"/>
