@@ -260,7 +260,7 @@ class CompleteSettingsViewController: NSViewController, NSTableViewDataSource, N
                 unratedEvents.reloadData()
                 
                 
-                let path = "/event/rate?userid=\(userId)&eventid=\(selectedId)&date=\(date)&rating=\(rate)"
+                let path = "/event/rate?userid=\(userId!)&eventid=\(selectedId)&date=\(date)&rating=\(rate)"
                 print(MoodProveHTTP.moodProveDomain + path)
                 MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + path)
             }
