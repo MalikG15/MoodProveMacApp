@@ -26,6 +26,34 @@ class ReportMoodViewController: NSViewController {
         
     }
     
+    @IBAction func tapModifiers(_ sender: Any) {
+        let selection = moodModifiers.titleOfSelectedItem!
+        if (selection != "--") {
+            let currentMoodLabelContents = currentMoodLabel.stringValue
+            for index in 0..<moodModifiersOptions.count {
+                if ((currentMoodLabelContents.range(of: moodModifiersOptions[index])) != nil) {
+                    currentMoodLabel.stringValue = currentMoodLabelContents.replacingOccurrences(of: moodModifiersOptions[index], with: selection)
+                    return
+                }
+            }
+            currentMoodLabel.stringValue += " " + selection
+        }
+    }
+
+    @IBAction func tapBaseMoods(_ sender: Any) {
+        let selection = baseMoods.titleOfSelectedItem!
+        if (selection != "--") {
+            let currentMoodLabelContents = currentMoodLabel.stringValue
+            for index in 0..<baseMoodsOptions.count {
+                if ((currentMoodLabelContents.range(of: baseMoodsOptions[index])) != nil) {
+                    currentMoodLabel.stringValue = currentMoodLabelContents.replacingOccurrences(of: baseMoodsOptions[index], with: selection)
+                    return
+                }
+            }
+            currentMoodLabel.stringValue += " " + selection
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.

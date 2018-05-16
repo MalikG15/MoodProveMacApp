@@ -684,32 +684,32 @@
             <objects>
                 <viewController storyboardIdentifier="reportMoodVC" id="hiz-Nf-P5l" customClass="ReportMoodViewController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
                     <box key="view" boxType="custom" cornerRadius="4" title="Box" id="OFV-UV-F42">
-                        <rect key="frame" x="0.0" y="0.0" width="513" height="362"/>
+                        <rect key="frame" x="0.0" y="0.0" width="699" height="465"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="jjh-qs-Onv">
-                            <rect key="frame" x="1" y="1" width="511" height="360"/>
+                            <rect key="frame" x="1" y="1" width="697" height="463"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1dx-bj-XFA">
-                                    <rect key="frame" x="63" y="304" width="398" height="36"/>
+                                    <rect key="frame" x="31" y="394" width="635" height="49"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="What was your mood for yesterday?" id="zR5-eg-a7e">
-                                        <font key="font" size="24" name="Seravek"/>
+                                        <font key="font" size="33" name="Seravek"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="laf-8C-4qq">
-                                    <rect key="frame" x="51" y="191" width="186" height="26"/>
+                                    <rect key="frame" x="79" y="244" width="223" height="45"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Mood Modifiers" id="uCF-ew-Ki5">
-                                        <font key="font" metaFont="system" size="22"/>
+                                        <font key="font" metaFont="system" size="31"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BrU-Ui-2ml">
-                                    <rect key="frame" x="315" y="188" width="120" height="26"/>
+                                    <rect key="frame" x="417" y="253" width="176" height="26"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="2oe-e1-Uzz" id="X9d-g1-gMk">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -722,38 +722,21 @@
                                             </items>
                                         </menu>
                                     </popUpButtonCell>
+                                    <connections>
+                                        <action selector="tapModifiers:" target="hiz-Nf-P5l" id="zbX-18-YWW"/>
+                                    </connections>
                                 </popUpButton>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YkJ-5M-Ml6">
-                                    <rect key="frame" x="63" y="110" width="130" height="34"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Base Moods" id="4D5-eA-ekk">
-                                        <font key="font" metaFont="system" size="22"/>
-                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yQI-xj-2bm">
-                                    <rect key="frame" x="18" y="247" width="489" height="36"/>
+                                    <rect key="frame" x="19" y="329" width="660" height="36"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Your mood is: " id="Yxf-Eb-Ljc">
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Your mood is: " id="Yxf-Eb-Ljc">
                                         <font key="font" metaFont="system" size="30"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7uk-TB-spv">
-                                    <rect key="frame" x="177" y="40" width="170" height="32"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="push" title="Report Your Mood!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r3W-qS-YNp">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="reportMood:" target="hiz-Nf-P5l" id="IQm-bJ-uVO"/>
-                                    </connections>
-                                </button>
                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q3A-E9-rhf">
-                                    <rect key="frame" x="315" y="113" width="120" height="26"/>
+                                    <rect key="frame" x="417" y="164" width="176" height="26"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="FhI-hQ-yym" id="qqB-EJ-R4Z">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -766,7 +749,30 @@
                                             </items>
                                         </menu>
                                     </popUpButtonCell>
+                                    <connections>
+                                        <action selector="tapBaseMoods:" target="hiz-Nf-P5l" id="UAQ-EL-Mez"/>
+                                    </connections>
                                 </popUpButton>
+                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7uk-TB-spv">
+                                    <rect key="frame" x="263" y="60" width="170" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="push" title="Report Your Mood!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r3W-qS-YNp">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system" size="15"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="reportMood:" target="hiz-Nf-P5l" id="IQm-bJ-uVO"/>
+                                    </connections>
+                                </button>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YkJ-5M-Ml6">
+                                    <rect key="frame" x="79" y="161" width="183" height="34"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Base Moods" id="4D5-eA-ekk">
+                                        <font key="font" metaFont="system" size="31"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
                             </subviews>
                         </view>
                         <color key="borderColor" red="0.047058824450000002" green="0.91372549530000002" blue="0.3058823645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -780,7 +786,7 @@
                 </viewController>
                 <customObject id="BjZ-4g-u3z" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2431.5" y="433"/>
+            <point key="canvasLocation" x="-2338.5" y="484.5"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="9A4-3C-6Rr">
