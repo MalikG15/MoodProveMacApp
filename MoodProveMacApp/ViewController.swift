@@ -48,8 +48,13 @@ class MainViewController: NSViewController, ChartViewDelegate {
     
     
     @IBAction func checkIn(_ sender: Any) {
-        
-        
+        let storyboard = NSStoryboard(name: "Main",bundle: nil)
+        let reportMoodViewController: ReportMoodViewController = storyboard.instantiateController(withIdentifier: "reportMoodVC") as! ReportMoodViewController
+        reportMoodViewController.userId = userId!
+        openAnotherWindow = NSWindow(contentViewController: reportMoodViewController)
+        openAnotherWindow?.makeKeyAndOrderFront(self)
+        let vc = NSWindowController(window: openAnotherWindow)
+        vc.showWindow(self)
     }
     
     
