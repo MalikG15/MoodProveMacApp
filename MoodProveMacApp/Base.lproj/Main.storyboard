@@ -662,6 +662,21 @@
             <point key="canvasLocation" x="362" y="-380"/>
         </scene>
         <!--Window Controller-->
+        <scene sceneID="zrn-ux-ZE6">
+            <objects>
+                <windowController id="qQC-gl-naM" customClass="ReportMoodWindowController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="F2u-yE-hjV">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                    </window>
+                </windowController>
+                <customObject id="h2v-hH-DHN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2431" y="-182"/>
+        </scene>
+        <!--Window Controller-->
         <scene sceneID="k1T-mQ-rfg">
             <objects>
                 <windowController id="bJF-yv-wkN" customClass="ReportMoodWindowController" customModule="MoodProve" customModuleProvider="target" sceneMemberID="viewController">
@@ -729,7 +744,7 @@
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yQI-xj-2bm">
                                     <rect key="frame" x="19" y="329" width="660" height="36"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Your mood is: " id="Yxf-Eb-Ljc">
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Your mood was: " id="Yxf-Eb-Ljc">
                                         <font key="font" metaFont="system" size="30"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

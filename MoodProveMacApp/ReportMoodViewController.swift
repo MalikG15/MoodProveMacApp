@@ -42,18 +42,19 @@ class ReportMoodViewController: NSViewController {
     
     @IBAction func tapModifiers(_ sender: Any) {
         let selection = moodModifiers.titleOfSelectedItem!
+        let currentMoodLabelContents = currentMoodLabel.stringValue
         if (selection != "--") {
-            let currentMoodLabelContents = currentMoodLabel.stringValue
             for index in 0..<moodModifiersOptions.count {
                 if ((currentMoodLabelContents.range(of: moodModifiersOptions[index])) != nil) {
                     currentMoodLabel.stringValue = currentMoodLabelContents.replacingOccurrences(of: moodModifiersOptions[index], with: selection)
                     return
                 }
             }
+            // if a modifier was not present, we just add it after 'was:'
             let labelComponents = currentMoodLabel.stringValue.components(separatedBy: " ")
             var updatedString = ""
             for index in 0..<labelComponents.count {
-                if (labelComponents[index] == "is:") {
+                if (labelComponents[index] == "was:") {
                     updatedString += labelComponents[index]
                     updatedString += " " + selection
                 }
@@ -67,6 +68,15 @@ class ReportMoodViewController: NSViewController {
                 }
             }
             currentMoodLabel.stringValue = updatedString
+        }
+        // remove modifier if -- is selected
+        else {
+            for index in 0..<moodModifiersOptions.count {
+                if ((currentMoodLabelContents.range(of: moodModifiersOptions[index])) != nil) {
+                    currentMoodLabel.stringValue = currentMoodLabelContents.replacingOccurrences(of: moodModifiersOptions[index], with: "")
+                    return
+                }
+            }
         }
     }
 
