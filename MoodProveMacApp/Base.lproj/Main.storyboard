@@ -709,9 +709,9 @@
                                     </textFieldCell>
                                 </textField>
                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BrU-Ui-2ml">
-                                    <rect key="frame" x="359" y="188" width="76" height="26"/>
+                                    <rect key="frame" x="315" y="188" width="120" height="26"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="2oe-e1-Uzz" id="X9d-g1-gMk">
+                                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="2oe-e1-Uzz" id="X9d-g1-gMk">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="menu"/>
                                         <menu key="menu" id="WNd-cR-HNF">
@@ -748,11 +748,14 @@
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
+                                    <connections>
+                                        <action selector="reportMood:" target="hiz-Nf-P5l" id="IQm-bJ-uVO"/>
+                                    </connections>
                                 </button>
                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q3A-E9-rhf">
-                                    <rect key="frame" x="359" y="113" width="76" height="26"/>
+                                    <rect key="frame" x="315" y="113" width="120" height="26"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="FhI-hQ-yym" id="qqB-EJ-R4Z">
+                                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="FhI-hQ-yym" id="qqB-EJ-R4Z">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="menu"/>
                                         <menu key="menu" id="QIB-Gz-xDZ">
@@ -769,10 +772,15 @@
                         <color key="borderColor" red="0.047058824450000002" green="0.91372549530000002" blue="0.3058823645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="fillColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </box>
+                    <connections>
+                        <outlet property="baseMoods" destination="q3A-E9-rhf" id="apw-yn-Z2a"/>
+                        <outlet property="currentMoodLabel" destination="yQI-xj-2bm" id="lfE-n0-LaK"/>
+                        <outlet property="moodModifiers" destination="BrU-Ui-2ml" id="PCn-CP-2iL"/>
+                    </connections>
                 </viewController>
                 <customObject id="BjZ-4g-u3z" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2431" y="433"/>
+            <point key="canvasLocation" x="-2431.5" y="433"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="9A4-3C-6Rr">
