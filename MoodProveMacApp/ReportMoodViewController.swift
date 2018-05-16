@@ -23,7 +23,7 @@ class ReportMoodViewController: NSViewController {
     @IBOutlet weak var currentMoodLabel: NSTextField!
     
     @IBAction func reportMood(_ sender: Any) {
-        
+
     }
     
     @IBAction func tapModifiers(_ sender: Any) {
@@ -36,7 +36,24 @@ class ReportMoodViewController: NSViewController {
                     return
                 }
             }
-            currentMoodLabel.stringValue += " " + selection
+            let labelComponents = currentMoodLabel.stringValue.components(separatedBy: " ")
+            var updatedString = ""
+            print(labelComponents)
+            for index in 0..<labelComponents.count {
+                if (labelComponents[index] == "is:") {
+                    updatedString += labelComponents[index]
+                    updatedString += " " + selection
+                }
+                else {
+                    if (index < labelComponents.count - 1) {
+                        updatedString += labelComponents[index] + " "
+                    }
+                    else {
+                        updatedString += labelComponents[index]
+                    }
+                }
+            }
+            currentMoodLabel.stringValue = updatedString
         }
     }
 
