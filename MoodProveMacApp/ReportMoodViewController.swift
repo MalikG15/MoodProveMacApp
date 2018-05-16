@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftyJSON
 
 class ReportMoodViewController: NSViewController {
     
@@ -23,7 +24,20 @@ class ReportMoodViewController: NSViewController {
     @IBOutlet weak var currentMoodLabel: NSTextField!
     
     @IBAction func reportMood(_ sender: Any) {
-
+        let selection = baseMoods.titleOfSelectedItem!
+        if (selection != "--") {
+            let modifierSelection = moodModifiers.titleOfSelectedItem!
+            //var JsonObject: JSON = []
+            var moodString = ""
+            if (modifierSelection != "--") {
+               moodString = "\"" + modifierSelection + " " + selection + "\":100"
+            }
+            else {
+                moodString = "\"" + selection + "\":100"
+            }
+            print(moodString)
+            //executeReportMoodRequest(mood: JsonObject.stringValue)
+        }
     }
     
     @IBAction func tapModifiers(_ sender: Any) {
@@ -38,7 +52,6 @@ class ReportMoodViewController: NSViewController {
             }
             let labelComponents = currentMoodLabel.stringValue.components(separatedBy: " ")
             var updatedString = ""
-            print(labelComponents)
             for index in 0..<labelComponents.count {
                 if (labelComponents[index] == "is:") {
                     updatedString += labelComponents[index]
@@ -68,6 +81,8 @@ class ReportMoodViewController: NSViewController {
                 }
             }
             currentMoodLabel.stringValue += " " + selection
+            // Location of the option "--"
+            baseMoods.removeItem(at: 0)
         }
     }
     
@@ -82,6 +97,10 @@ class ReportMoodViewController: NSViewController {
         baseMoods.removeAllItems()
         moodModifiers.addItems(withTitles: moodModifiersOptions)
         baseMoods.addItems(withTitles: baseMoodsOptions)
+    }
+    
+    func executeReportMoodRequest(mood: String) {
+        print(mood)
     }
     
 }
