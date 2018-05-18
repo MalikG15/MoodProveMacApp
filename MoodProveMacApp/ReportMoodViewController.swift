@@ -30,13 +30,15 @@ class ReportMoodViewController: NSViewController {
             //var JsonObject: JSON = []
             var moodString = ""
             if (modifierSelection != "--") {
-               moodString = "\"" + modifierSelection + " " + selection + "\":100"
+               // placing '%20' since it represents a space and 
+               // so that the predicted mood can be sent via http
+               moodString = modifierSelection + "%20" + selection
             }
             else {
-                moodString = "\"" + selection + "\":100"
+                moodString = selection
             }
             print(moodString)
-            //executeReportMoodRequest(mood: JsonObject.stringValue)
+            executeReportMoodRequest(mood: moodString)
         }
     }
     
@@ -110,7 +112,10 @@ class ReportMoodViewController: NSViewController {
     }
     
     func executeReportMoodRequest(mood: String) {
-        print(mood)
+        let currentDateTime = Int(Date().timeIntervalSince1970)
+        let domain = MoodProveHTTP.moodProveDomain
+        _ = MoodProveHTTP.getRequest(urlRequest: domain + "/predicted/checkIn?userid=\(userId!)&timestamp=\(currentDateTime)&mood=\(mood)")
+        self.view.window?.close()
     }
     
 }
