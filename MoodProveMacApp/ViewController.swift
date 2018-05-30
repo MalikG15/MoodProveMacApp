@@ -27,10 +27,12 @@ class MainViewController: NSViewController, NSCollectionViewDataSource, NSCollec
     let moodProveServerDomain: String = "http://localhost:8080"
     
     @IBOutlet weak var mainPieChartView: PieChartView!
-    
-    @IBOutlet weak var distantPredictionCollectionView: NSCollectionView!
-    
+
     @IBOutlet weak var titleOnMainView: NSTextField!
+    
+    @IBOutlet weak var moodOverviewCollectionView: NSCollectionView!
+    
+    @IBOutlet weak var moodDetailCollectionView: NSCollectionView!
     
     @IBOutlet weak var descriptionForCheckIn: NSTextField!
     
@@ -77,16 +79,29 @@ class MainViewController: NSViewController, NSCollectionViewDataSource, NSCollec
             return
         }*/
         
-        // set up collection view
+        // Set up mood overview collection view
         let layout = NSCollectionViewFlowLayout()
         layout.itemSize = NSSize(width: 200, height: 100)
         layout.sectionInset = EdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
         layout.minimumLineSpacing = 5
         layout.minimumInteritemSpacing = 5
-        distantPredictionCollectionView.collectionViewLayout = layout
+        moodOverviewCollectionView.collectionViewLayout = layout
         
-        distantPredictionCollectionView.dataSource = self
-        distantPredictionCollectionView.delegate = self
+        moodOverviewCollectionView.dataSource = self
+        moodOverviewCollectionView.delegate = self
+        
+        
+        // ----------------------------------------------
+        
+        
+        // Set up mood detail collection view
+        moodDetailCollectionView.collectionViewLayout = layout
+        
+        moodDetailCollectionView.dataSource = self
+        moodDetailCollectionView.delegate = self
+        
+        
+       // ----------------------------------------------
         
         checkInMood.isHidden = true
         descriptionForCheckIn.isHidden = true
@@ -352,11 +367,11 @@ class MainViewController: NSViewController, NSCollectionViewDataSource, NSCollec
         mainPieChartView.chartDescription?.text = ""
     }
     
-    // MARK: - Future Prediction CollectionView Configuration
+    // MARK: - Mood Overview CollectionView Configuration
     
     // Delegate
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: "FuturePredictionCollectionViewItem", for: indexPath)
+        let item = collectionView.makeItem(withIdentifier: "MoodOverviewCollectionViewItem", for: indexPath)
         return item
     }
     

@@ -1707,18 +1707,17 @@
                                         <customView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SFa-ya-XtI" customClass="PieChartView" customModule="Charts">
                                             <rect key="frame" x="596" y="413" width="726" height="514"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="726" id="AUh-2B-G8b"/>
                                                 <constraint firstAttribute="height" constant="514" id="Kdj-A8-z4B"/>
                                             </constraints>
                                         </customView>
                                         <scrollView wantsLayer="YES" ambiguous="YES" misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUh-Pc-ofe">
-                                            <rect key="frame" x="587" y="0.0" width="735" height="205"/>
+                                            <rect key="frame" x="1449" y="44" width="433" height="708"/>
                                             <clipView key="contentView" drawsBackground="NO" id="03b-iK-aYn">
-                                                <rect key="frame" x="1" y="1" width="733" height="203"/>
+                                                <rect key="frame" x="1" y="1" width="431" height="706"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <collectionView id="p3u-VY-Gb3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="733" height="203"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="431" height="706"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="bpd-p9-a63">
                                                             <size key="itemSize" width="50" height="50"/>
@@ -1729,8 +1728,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </clipView>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="735" id="JqF-Qe-Fm4"/>
-                                                <constraint firstAttribute="height" constant="205" id="bZM-Wz-cu0"/>
+                                                <constraint firstAttribute="height" constant="708" id="ViK-gR-XhB"/>
                                             </constraints>
                                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="AYa-fA-A6c">
                                                 <rect key="frame" x="1" y="144" width="233" height="15"/>
@@ -1741,21 +1739,89 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                         </scrollView>
+                                        <segmentedControl verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tt4-Ju-mI1">
+                                            <rect key="frame" x="1564" y="840" width="205" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="CGO-vf-NBY"/>
+                                            </constraints>
+                                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="5tC-iw-jZM">
+                                                <font key="font" metaFont="system"/>
+                                                <segments>
+                                                    <segment label="Past Mood"/>
+                                                    <segment label="Predicted Mood" selected="YES" tag="1"/>
+                                                </segments>
+                                            </segmentedCell>
+                                        </segmentedControl>
+                                        <datePicker verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mca-Is-meY">
+                                            <rect key="frame" x="1598" y="783" width="139" height="27"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="23" id="7TM-jp-JJO"/>
+                                                <constraint firstAttribute="width" constant="136" id="bKG-Zn-tdW"/>
+                                            </constraints>
+                                            <datePickerCell key="cell" borderStyle="bezel" alignment="left" datePickerMode="range" id="4Ft-fj-f6s">
+                                                <font key="font" metaFont="system"/>
+                                                <date key="date" timeIntervalSinceReferenceDate="-569750400">
+                                                    <!--1982-12-12 16:00:00 +0000-->
+                                                </date>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <datePickerElements key="datePickerElements" year="YES" month="YES"/>
+                                            </datePickerCell>
+                                        </datePicker>
+                                        <scrollView wantsLayer="YES" ambiguous="YES" misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgw-Ff-GWK">
+                                            <rect key="frame" x="596" y="0.0" width="726" height="400"/>
+                                            <clipView key="contentView" drawsBackground="NO" id="8dX-OH-nJq">
+                                                <rect key="frame" x="1" y="1" width="724" height="398"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <collectionView id="tQJ-Uv-0Ux">
+                                                        <rect key="frame" x="0.0" y="0.0" width="724" height="398"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="LV4-oz-mVl">
+                                                            <size key="itemSize" width="50" height="50"/>
+                                                        </collectionViewFlowLayout>
+                                                        <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </collectionView>
+                                                </subviews>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </clipView>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="400" id="oCb-NR-y2I"/>
+                                                <constraint firstAttribute="width" constant="726" id="twy-Gd-yyX"/>
+                                            </constraints>
+                                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Ucd-Wb-MSb">
+                                                <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="58n-nu-iRH">
+                                                <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                        </scrollView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="mgw-Ff-GWK" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="1Vg-a2-xYN"/>
                                         <constraint firstItem="pUC-UU-e3E" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="20" id="2mD-NQ-ndS"/>
-                                        <constraint firstItem="SFa-ya-XtI" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="GzA-SB-48p"/>
+                                        <constraint firstItem="SFa-ya-XtI" firstAttribute="centerX" secondItem="hpn-N3-1zi" secondAttribute="centerX" id="7fG-qn-Qwm"/>
+                                        <constraint firstItem="tt4-Ju-mI1" firstAttribute="centerX" secondItem="OUh-Pc-ofe" secondAttribute="centerX" id="EJu-B1-n3f"/>
                                         <constraint firstItem="3hH-rX-Jc7" firstAttribute="centerX" secondItem="WLd-Q4-KeN" secondAttribute="centerX" id="NlC-hY-odZ"/>
-                                        <constraint firstItem="hpn-N3-1zi" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="RyE-TC-4OJ"/>
+                                        <constraint firstItem="p3u-VY-Gb3" firstAttribute="top" secondItem="Mca-Is-meY" secondAttribute="bottom" constant="32" id="QW1-fd-kQT"/>
                                         <constraint firstItem="3hH-rX-Jc7" firstAttribute="centerY" secondItem="WLd-Q4-KeN" secondAttribute="centerY" id="TN1-Cy-1g9"/>
+                                        <constraint firstItem="SFa-ya-XtI" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="UKy-P1-K5H"/>
                                         <constraint firstItem="WLd-Q4-KeN" firstAttribute="top" secondItem="hpn-N3-1zi" secondAttribute="bottom" constant="8" id="VQN-oU-dLf"/>
-                                        <constraint firstItem="hpn-N3-1zi" firstAttribute="centerX" secondItem="3hH-rX-Jc7" secondAttribute="centerX" id="Xmu-fI-1Wz"/>
                                         <constraint firstAttribute="trailing" secondItem="pUC-UU-e3E" secondAttribute="trailing" constant="74" id="a2C-lO-IVn"/>
+                                        <constraint firstAttribute="trailing" secondItem="OUh-Pc-ofe" secondAttribute="trailing" constant="36" id="aIg-92-pR0"/>
+                                        <constraint firstItem="tt4-Ju-mI1" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="237" id="b8h-eV-rO0"/>
                                         <constraint firstItem="3hH-rX-Jc7" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="700" id="biA-T5-Fih"/>
+                                        <constraint firstItem="Mca-Is-meY" firstAttribute="top" secondItem="tt4-Ju-mI1" secondAttribute="bottom" constant="36" id="cQA-mY-TKG"/>
                                         <constraint firstItem="3hH-rX-Jc7" firstAttribute="top" secondItem="hpn-N3-1zi" secondAttribute="bottom" constant="35" id="dLN-9q-4kW"/>
+                                        <constraint firstAttribute="trailing" secondItem="tt4-Ju-mI1" secondAttribute="trailing" constant="141" id="fId-qb-Wei"/>
+                                        <constraint firstItem="SFa-ya-XtI" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="596" id="imb-cN-Ux1"/>
+                                        <constraint firstItem="mgw-Ff-GWK" firstAttribute="top" secondItem="SFa-ya-XtI" secondAttribute="bottom" constant="13" id="kn6-Sf-im3"/>
                                         <constraint firstItem="hpn-N3-1zi" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="20" id="l2m-2b-ce8"/>
+                                        <constraint firstItem="SFa-ya-XtI" firstAttribute="centerX" secondItem="3hH-rX-Jc7" secondAttribute="centerX" id="l3W-fG-TXV"/>
+                                        <constraint firstItem="Mca-Is-meY" firstAttribute="centerX" secondItem="tt4-Ju-mI1" secondAttribute="centerX" id="pVs-Sc-8Jt"/>
                                         <constraint firstItem="SFa-ya-XtI" firstAttribute="top" secondItem="WLd-Q4-KeN" secondAttribute="bottom" constant="23" id="qJY-m2-wn2"/>
-                                        <constraint firstItem="OUh-Pc-ofe" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="tde-5X-VNc"/>
                                     </constraints>
                                 </view>
                                 <color key="borderColor" red="0.047058824450000002" green="0.91372549530000002" blue="0.3058823645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1766,8 +1832,9 @@
                     <connections>
                         <outlet property="checkInMood" destination="3hH-rX-Jc7" id="mGe-42-T9e"/>
                         <outlet property="descriptionForCheckIn" destination="hpn-N3-1zi" id="tvA-Hk-IZR"/>
-                        <outlet property="distantPredictionCollectionView" destination="p3u-VY-Gb3" id="O9t-NM-EQy"/>
                         <outlet property="mainPieChartView" destination="SFa-ya-XtI" id="Rpb-EX-SgN"/>
+                        <outlet property="moodDetailCollectionView" destination="tQJ-Uv-0Ux" id="2Ue-hp-nFW"/>
+                        <outlet property="moodOverviewCollectionView" destination="p3u-VY-Gb3" id="m6L-9N-S4j"/>
                         <outlet property="titleOnMainView" destination="WLd-Q4-KeN" id="4mU-Cm-WX2"/>
                     </connections>
                 </viewController>

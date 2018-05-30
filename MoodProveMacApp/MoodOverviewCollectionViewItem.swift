@@ -1,5 +1,5 @@
 //
-//  FuturePredictionCollectionViewItem.swift
+//  MoodOverviewCollectionViewItem.swift
 //  MoodProve
 //
 //  Created by Malik Graham on 5/30/18.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class FuturePredictionCollectionViewItem: NSCollectionViewItem {
+class MoodOverviewCollectionViewItem: NSCollectionViewItem {
 
     override func viewDidLoad() {
         super.viewDidLoad()
