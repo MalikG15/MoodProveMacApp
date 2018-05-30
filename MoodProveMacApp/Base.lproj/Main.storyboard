@@ -1301,7 +1301,7 @@
                                                     </tableView>
                                                 </subviews>
                                             </clipView>
-                                            <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="ecr-uS-FTu">
+                                            <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="ecr-uS-FTu">
                                                 <rect key="frame" x="1" y="270" width="932" height="16"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
@@ -1315,7 +1315,7 @@
                                             </tableHeaderView>
                                         </scrollView>
                                         <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i8J-Pt-TlV">
-                                            <rect key="frame" x="979" y="17" width="20" height="292"/>
+                                            <rect key="frame" x="979" y="17" width="21" height="292"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <sliderCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="10" doubleValue="5" tickMarkPosition="right" allowsTickMarkValuesOnly="YES" sliderType="linear" id="ft3-hC-mXD"/>
                                             <connections>
@@ -1537,7 +1537,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </box>
                                         <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="BTu-Ya-bra">
-                                            <rect key="frame" x="437" y="577" width="169" height="5"/>
+                                            <rect key="frame" x="437" y="577" width="169" height="4"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </box>
                                         <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Jcu-fW-6Me">
@@ -1654,32 +1654,6 @@
                                     <rect key="frame" x="1" y="1" width="1918" height="1078"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <customView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gv6-JB-f1n" customClass="BarChartView" customModule="Charts">
-                                            <rect key="frame" x="74" y="46" width="1770" height="896"/>
-                                        </customView>
-                                        <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5bX-wX-LSe">
-                                            <rect key="frame" x="86" y="941" width="69" height="32"/>
-                                            <buttonCell key="cell" type="push" title="&lt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ldK-Tk-e1A">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="getPastMoodBefore:" target="XfG-lQ-9wD" id="K8a-Vp-4WP"/>
-                                            </connections>
-                                        </button>
-                                        <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IaS-QT-Hit">
-                                            <rect key="frame" x="155" y="941" width="69" height="32"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="57" id="F2z-h2-tWt"/>
-                                            </constraints>
-                                            <buttonCell key="cell" type="push" title="&gt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zw9-PJ-dIO">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="getPastMoodAfter:" target="XfG-lQ-9wD" id="RB4-Lp-Qy5"/>
-                                            </connections>
-                                        </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WLd-Q4-KeN">
                                             <rect key="frame" x="685" y="950" width="549" height="75"/>
                                             <constraints>
@@ -1719,6 +1693,9 @@
                                         </button>
                                         <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3hH-rX-Jc7">
                                             <rect key="frame" x="842" y="970" width="235" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="YNk-8L-KUr"/>
+                                            </constraints>
                                             <buttonCell key="cell" type="push" title="The Time is Now to Check In!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bmV-DY-9ku">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1727,28 +1704,27 @@
                                                 <action selector="checkIn:" target="XfG-lQ-9wD" id="hGW-sO-L8J"/>
                                             </connections>
                                         </button>
+                                        <customView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SFa-ya-XtI" customClass="PieChartView" customModule="Charts">
+                                            <rect key="frame" x="596" y="413" width="726" height="514"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="726" id="AUh-2B-G8b"/>
+                                                <constraint firstAttribute="height" constant="514" id="Kdj-A8-z4B"/>
+                                            </constraints>
+                                        </customView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="WLd-Q4-KeN" secondAttribute="bottom" constant="8" symbolic="YES" id="1AE-ey-lip"/>
                                         <constraint firstItem="pUC-UU-e3E" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="20" id="2mD-NQ-ndS"/>
-                                        <constraint firstAttribute="bottom" secondItem="gv6-JB-f1n" secondAttribute="bottom" constant="46" id="3M2-Go-hnu"/>
-                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="IaS-QT-Hit" secondAttribute="bottom" constant="6" id="3Y4-c1-esp"/>
+                                        <constraint firstItem="SFa-ya-XtI" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="GzA-SB-48p"/>
                                         <constraint firstItem="3hH-rX-Jc7" firstAttribute="centerX" secondItem="WLd-Q4-KeN" secondAttribute="centerX" id="NlC-hY-odZ"/>
-                                        <constraint firstItem="IaS-QT-Hit" firstAttribute="leading" secondItem="5bX-wX-LSe" secondAttribute="trailing" constant="12" symbolic="YES" id="PT3-K1-JjF"/>
                                         <constraint firstItem="hpn-N3-1zi" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="RyE-TC-4OJ"/>
-                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="Rz8-fC-aoU"/>
-                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="pUC-UU-e3E" secondAttribute="bottom" constant="51" id="SWc-L0-PbL"/>
-                                        <constraint firstItem="5bX-wX-LSe" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="92" id="TJ6-kA-99O"/>
                                         <constraint firstItem="3hH-rX-Jc7" firstAttribute="centerY" secondItem="WLd-Q4-KeN" secondAttribute="centerY" id="TN1-Cy-1g9"/>
                                         <constraint firstItem="WLd-Q4-KeN" firstAttribute="top" secondItem="hpn-N3-1zi" secondAttribute="bottom" constant="8" id="VQN-oU-dLf"/>
-                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="136" id="ZR2-DP-2jd"/>
+                                        <constraint firstItem="hpn-N3-1zi" firstAttribute="centerX" secondItem="3hH-rX-Jc7" secondAttribute="centerX" id="Xmu-fI-1Wz"/>
                                         <constraint firstAttribute="trailing" secondItem="pUC-UU-e3E" secondAttribute="trailing" constant="74" id="a2C-lO-IVn"/>
                                         <constraint firstItem="3hH-rX-Jc7" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="700" id="biA-T5-Fih"/>
-                                        <constraint firstItem="IaS-QT-Hit" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="161" id="bpo-r2-RWe"/>
-                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="74" id="cQz-6N-oZa"/>
-                                        <constraint firstItem="5bX-wX-LSe" firstAttribute="baseline" secondItem="IaS-QT-Hit" secondAttribute="baseline" id="ckD-PM-j6V"/>
+                                        <constraint firstItem="3hH-rX-Jc7" firstAttribute="top" secondItem="hpn-N3-1zi" secondAttribute="bottom" constant="35" id="dLN-9q-4kW"/>
                                         <constraint firstItem="hpn-N3-1zi" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="20" id="l2m-2b-ce8"/>
-                                        <constraint firstItem="gv6-JB-f1n" firstAttribute="centerX" secondItem="WLd-Q4-KeN" secondAttribute="centerX" id="rxG-Mw-Rar"/>
+                                        <constraint firstItem="SFa-ya-XtI" firstAttribute="top" secondItem="WLd-Q4-KeN" secondAttribute="bottom" constant="23" id="qJY-m2-wn2"/>
                                     </constraints>
                                 </view>
                                 <color key="borderColor" red="0.047058824450000002" green="0.91372549530000002" blue="0.3058823645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1759,7 +1735,7 @@
                     <connections>
                         <outlet property="checkInMood" destination="3hH-rX-Jc7" id="mGe-42-T9e"/>
                         <outlet property="descriptionForCheckIn" destination="hpn-N3-1zi" id="tvA-Hk-IZR"/>
-                        <outlet property="moodDataChart" destination="gv6-JB-f1n" id="loR-hZ-vYL"/>
+                        <outlet property="mainPieChartView" destination="SFa-ya-XtI" id="Rpb-EX-SgN"/>
                         <outlet property="titleOnMainView" destination="WLd-Q4-KeN" id="4mU-Cm-WX2"/>
                     </connections>
                 </viewController>

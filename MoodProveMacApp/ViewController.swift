@@ -27,12 +27,11 @@ class MainViewController: NSViewController, ChartViewDelegate {
     
     let moodProveServerDomain: String = "http://localhost:8080"
     
+    @IBOutlet weak var mainPieChartView: PieChartView!
     
     @IBOutlet weak var titleOnMainView: NSTextField!
     
     @IBOutlet weak var descriptionForCheckIn: NSTextField!
-    
-    @IBOutlet weak var moodDataChart: BarChartView!
     
     @IBOutlet weak var checkInMood: NSButton!
     
@@ -58,39 +57,12 @@ class MainViewController: NSViewController, ChartViewDelegate {
     }
     
     
-    @IBAction func getPastMoodBefore(_ sender: Any) {
-        
-        // String(describing: Int(minimumTimestamp!.timeIntervalSince1970))
-        let userid = "happy"
-        let timestamp = 3
-        let res = MoodProveHTTP.getRequest(urlRequest: "\(moodProveServerDomain)/past/beforeOrAfter?userid=\(userid)&timestamp=\(minimumTimestamp!)&type=before")
-            self.handleChangeInMoodTime(json: res)
-    }
-
-    @IBAction func getPastMoodAfter(_ sender: Any) {
-        // String(describing: Int(minimumTimestamp!.timeIntervalSince1970))
-        let userid = "happy"
-        let timestamp = 3
-        let res = MoodProveHTTP.getRequest(urlRequest: "\(moodProveServerDomain)/past/beforeOrAfter?userid=\(userid)&timestamp=\(timestamp)&type=after")
-        self.handleChangeInMoodTime(json: res)
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        if (userId == "a364760a-f926-4a6e-bf89-f60e1f531191") {
-            // fill table
-            titleOnMainView.stringValue = "Malik's Mood Predictions!"
-            descriptionForCheckIn.isHidden = true
-            checkInMood.isHidden = true
-            customFillTable()
-            return
-        }
-        
         // Check to see how to load the view
-        if (newUser! == true || userHasEnoughMoodHistory()) {
+        /*if (newUser! == true || userHasEnoughMoodHistory()) {
             let response = getCheckInTimes()
             if (response == "Now") {
                 titleOnMainView.isHidden = true
@@ -102,13 +74,12 @@ class MainViewController: NSViewController, ChartViewDelegate {
             titleOnMainView.stringValue = getCheckInTimes()
             descriptionForCheckIn.stringValue = "\(name!)'s Next Check-In with MoodProve is:"
             return
-        }
+        }*/
         
         checkInMood.isHidden = true
         descriptionForCheckIn.isHidden = true
-        let date = Date()
-        minimumTimestamp = date.timeIntervalSince1970
-        retrieveBarChartData(currentDate: date.timeIntervalSince1970)
+        
+        setPieChart(dataPoints: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"], values: [10.0, 4.0, 6.0, 3.0, 12.0, 16.0])
     }
 
     override var representedObject: Any? {
@@ -117,7 +88,7 @@ class MainViewController: NSViewController, ChartViewDelegate {
         }
     }
     
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+    /*func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
     
     }
     
@@ -277,7 +248,7 @@ class MainViewController: NSViewController, ChartViewDelegate {
         
         maximumTimestamp = sortedDictionary.last?.key
         minimumTimestamp = sortedDictionary.first?.key
-    }
+    }*/
     
     func userHasEnoughMoodHistory() -> Bool {
         let path = "/past/check?userid=\(userId!)"
@@ -301,7 +272,7 @@ class MainViewController: NSViewController, ChartViewDelegate {
         return moodHistory["checkInInterval"].stringValue
     }
     
-    func customFillTable() {
+    /*func customFillTable() {
         let path = "/predicted/get?userid=\(userId!)"
         let response = MoodProveHTTP.getRequest(urlRequest: MoodProveHTTP.moodProveDomain + path)
         
@@ -333,6 +304,63 @@ class MainViewController: NSViewController, ChartViewDelegate {
     func bringToFront() {
         let window = self.view.window
         window?.collectionBehavior = NSWindowCollectionBehavior.moveToActiveSpace
+    }*/
+    
+    // MARK: - PieChart COnfiguration
+    
+    func setPieChart(dataPoints: [String], values: [Double]) {
+        
+        
+        var entries = [PieChartDataEntry]()
+        
+        for (index, value) in values.enumerated() {
+            let entry = PieChartDataEntry()
+            entry.y = value
+            entry.label = dataPoints[index]
+            entries.append(entry)
+        }
+        
+        let dataSet = PieChartDataSet(values: entries, label: "")
+        
+        var colors: [NSColor] = []
+        
+        for _ in 0..<values.count {
+            let red = Double(arc4random_uniform(256))
+            let green = Double(arc4random_uniform(256))
+            let blue = Double(arc4random_uniform(256))
+            let color = NSColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
+            colors.append(color)
+        }
+        
+        dataSet.colors = colors
+        let data = PieChartData(dataSet: dataSet)
+        mainPieChartView.data = data
+        mainPieChartView.animate(xAxisDuration: 1.5)
+        /*var dataEntries: [ChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry1 = ChartDataEntry(x: Double(i), y: values[i], data: dataPoints[i] as AnyObject)
+            
+            dataEntries.append(dataEntry1)
+        }
+        print(dataEntries[0].data)
+        let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "Units Sold")
+        let pieChartData = PieChartData(dataSet: pieChartDataSet)
+        mainPieChartView.data = pieChartData
+        
+        var colors: [NSColor] = []
+        
+        for _ in 0..<dataPoints.count {
+            let red = Double(arc4random_uniform(256))
+            let green = Double(arc4random_uniform(256))
+            let blue = Double(arc4random_uniform(256))
+            
+            let color = NSColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
+            colors.append(color)
+        }
+        
+        pieChartDataSet.colors = colors*/
+        
     }
     
 }
