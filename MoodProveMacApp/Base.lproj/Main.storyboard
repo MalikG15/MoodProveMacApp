@@ -1711,6 +1711,36 @@
                                                 <constraint firstAttribute="height" constant="514" id="Kdj-A8-z4B"/>
                                             </constraints>
                                         </customView>
+                                        <scrollView wantsLayer="YES" ambiguous="YES" misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUh-Pc-ofe">
+                                            <rect key="frame" x="587" y="0.0" width="735" height="205"/>
+                                            <clipView key="contentView" drawsBackground="NO" id="03b-iK-aYn">
+                                                <rect key="frame" x="1" y="1" width="733" height="203"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <collectionView id="p3u-VY-Gb3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="733" height="203"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="bpd-p9-a63">
+                                                            <size key="itemSize" width="50" height="50"/>
+                                                        </collectionViewFlowLayout>
+                                                        <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </collectionView>
+                                                </subviews>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </clipView>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="735" id="JqF-Qe-Fm4"/>
+                                                <constraint firstAttribute="height" constant="205" id="bZM-Wz-cu0"/>
+                                            </constraints>
+                                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="AYa-fA-A6c">
+                                                <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="I02-Lf-ehO">
+                                                <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                        </scrollView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="pUC-UU-e3E" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="20" id="2mD-NQ-ndS"/>
@@ -1725,6 +1755,7 @@
                                         <constraint firstItem="3hH-rX-Jc7" firstAttribute="top" secondItem="hpn-N3-1zi" secondAttribute="bottom" constant="35" id="dLN-9q-4kW"/>
                                         <constraint firstItem="hpn-N3-1zi" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="20" id="l2m-2b-ce8"/>
                                         <constraint firstItem="SFa-ya-XtI" firstAttribute="top" secondItem="WLd-Q4-KeN" secondAttribute="bottom" constant="23" id="qJY-m2-wn2"/>
+                                        <constraint firstItem="OUh-Pc-ofe" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="tde-5X-VNc"/>
                                     </constraints>
                                 </view>
                                 <color key="borderColor" red="0.047058824450000002" green="0.91372549530000002" blue="0.3058823645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1735,6 +1766,7 @@
                     <connections>
                         <outlet property="checkInMood" destination="3hH-rX-Jc7" id="mGe-42-T9e"/>
                         <outlet property="descriptionForCheckIn" destination="hpn-N3-1zi" id="tvA-Hk-IZR"/>
+                        <outlet property="distantPredictionCollectionView" destination="p3u-VY-Gb3" id="O9t-NM-EQy"/>
                         <outlet property="mainPieChartView" destination="SFa-ya-XtI" id="Rpb-EX-SgN"/>
                         <outlet property="titleOnMainView" destination="WLd-Q4-KeN" id="4mU-Cm-WX2"/>
                     </connections>

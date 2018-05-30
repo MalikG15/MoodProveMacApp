@@ -11,8 +11,7 @@ import Charts
 import OAuthSwift
 import SwiftyJSON
 
-class MainViewController: NSViewController, ChartViewDelegate {
-    
+class MainViewController: NSViewController, NSCollectionViewDataSource, NSCollectionViewDelegate, ChartViewDelegate {
     var minimumTimestamp: TimeInterval?
     
     var maximumTimestamp: TimeInterval?
@@ -28,6 +27,8 @@ class MainViewController: NSViewController, ChartViewDelegate {
     let moodProveServerDomain: String = "http://localhost:8080"
     
     @IBOutlet weak var mainPieChartView: PieChartView!
+    
+    @IBOutlet weak var distantPredictionCollectionView: NSCollectionView!
     
     @IBOutlet weak var titleOnMainView: NSTextField!
     
@@ -75,6 +76,17 @@ class MainViewController: NSViewController, ChartViewDelegate {
             descriptionForCheckIn.stringValue = "\(name!)'s Next Check-In with MoodProve is:"
             return
         }*/
+        
+        // set up collection view
+        let layout = NSCollectionViewFlowLayout()
+        layout.itemSize = NSSize(width: 100, height: 100)
+        layout.sectionInset = EdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        distantPredictionCollectionView.collectionViewLayout = layout
+        
+        distantPredictionCollectionView.dataSource = self
+        distantPredictionCollectionView.delegate = self
         
         checkInMood.isHidden = true
         descriptionForCheckIn.isHidden = true
@@ -309,8 +321,6 @@ class MainViewController: NSViewController, ChartViewDelegate {
     // MARK: - PieChart COnfiguration
     
     func setPieChart(dataPoints: [String], values: [Double]) {
-        
-        
         var entries = [PieChartDataEntry]()
         
         for (index, value) in values.enumerated() {
@@ -335,32 +345,25 @@ class MainViewController: NSViewController, ChartViewDelegate {
         dataSet.colors = colors
         let data = PieChartData(dataSet: dataSet)
         mainPieChartView.data = data
+        
+        
         mainPieChartView.animate(xAxisDuration: 1.5)
-        /*var dataEntries: [ChartDataEntry] = []
         
-        for i in 0..<dataPoints.count {
-            let dataEntry1 = ChartDataEntry(x: Double(i), y: values[i], data: dataPoints[i] as AnyObject)
-            
-            dataEntries.append(dataEntry1)
-        }
-        print(dataEntries[0].data)
-        let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "Units Sold")
-        let pieChartData = PieChartData(dataSet: pieChartDataSet)
-        mainPieChartView.data = pieChartData
-        
-        var colors: [NSColor] = []
-        
-        for _ in 0..<dataPoints.count {
-            let red = Double(arc4random_uniform(256))
-            let green = Double(arc4random_uniform(256))
-            let blue = Double(arc4random_uniform(256))
-            
-            let color = NSColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
-            colors.append(color)
-        }
-        
-        pieChartDataSet.colors = colors*/
-        
+        mainPieChartView.chartDescription?.text = ""
+    }
+    
+    // MARK: - Future Prediction CollectionView Configuration
+    
+    // Delegate
+    func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
+        let item = collectionView.makeItem(withIdentifier: "FuturePredictionCollectionViewItem", for: indexPath)
+        return item
+    }
+    
+    // Data Source
+    @available(OSX 10.11, *)
+    func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
     }
     
 }
