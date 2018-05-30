@@ -1301,7 +1301,7 @@
                                                     </tableView>
                                                 </subviews>
                                             </clipView>
-                                            <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="ecr-uS-FTu">
+                                            <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="ecr-uS-FTu">
                                                 <rect key="frame" x="1" y="270" width="932" height="16"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
@@ -1315,7 +1315,7 @@
                                             </tableHeaderView>
                                         </scrollView>
                                         <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i8J-Pt-TlV">
-                                            <rect key="frame" x="979" y="17" width="21" height="292"/>
+                                            <rect key="frame" x="979" y="17" width="20" height="292"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <sliderCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="10" doubleValue="5" tickMarkPosition="right" allowsTickMarkValuesOnly="YES" sliderType="linear" id="ft3-hC-mXD"/>
                                             <connections>
@@ -1537,7 +1537,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </box>
                                         <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="BTu-Ya-bra">
-                                            <rect key="frame" x="437" y="577" width="169" height="4"/>
+                                            <rect key="frame" x="437" y="577" width="169" height="5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </box>
                                         <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Jcu-fW-6Me">
@@ -1717,7 +1717,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <collectionView id="p3u-VY-Gb3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="431" height="706"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="413" height="706"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="bpd-p9-a63">
                                                             <size key="itemSize" width="50" height="50"/>
@@ -1798,12 +1798,22 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                         </scrollView>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2E0-SW-TCj">
+                                            <rect key="frame" x="1582" y="894" width="168" height="33"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Mood Search" id="Hhw-hC-sjy">
+                                                <font key="font" metaFont="system" size="27"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="mgw-Ff-GWK" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="1Vg-a2-xYN"/>
                                         <constraint firstItem="pUC-UU-e3E" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="20" id="2mD-NQ-ndS"/>
                                         <constraint firstItem="SFa-ya-XtI" firstAttribute="centerX" secondItem="hpn-N3-1zi" secondAttribute="centerX" id="7fG-qn-Qwm"/>
+                                        <constraint firstItem="tt4-Ju-mI1" firstAttribute="top" secondItem="2E0-SW-TCj" secondAttribute="bottom" constant="30" id="BNP-ss-rpn"/>
                                         <constraint firstItem="tt4-Ju-mI1" firstAttribute="centerX" secondItem="OUh-Pc-ofe" secondAttribute="centerX" id="EJu-B1-n3f"/>
+                                        <constraint firstItem="2E0-SW-TCj" firstAttribute="centerX" secondItem="tt4-Ju-mI1" secondAttribute="centerX" id="NQ9-6C-ygi"/>
                                         <constraint firstItem="3hH-rX-Jc7" firstAttribute="centerX" secondItem="WLd-Q4-KeN" secondAttribute="centerX" id="NlC-hY-odZ"/>
                                         <constraint firstItem="p3u-VY-Gb3" firstAttribute="top" secondItem="Mca-Is-meY" secondAttribute="bottom" constant="32" id="QW1-fd-kQT"/>
                                         <constraint firstItem="3hH-rX-Jc7" firstAttribute="centerY" secondItem="WLd-Q4-KeN" secondAttribute="centerY" id="TN1-Cy-1g9"/>
