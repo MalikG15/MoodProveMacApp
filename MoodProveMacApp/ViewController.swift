@@ -79,10 +79,10 @@ class MainViewController: NSViewController, NSCollectionViewDataSource, NSCollec
         
         // set up collection view
         let layout = NSCollectionViewFlowLayout()
-        layout.itemSize = NSSize(width: 100, height: 100)
+        layout.itemSize = NSSize(width: 200, height: 100)
         layout.sectionInset = EdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 5
+        layout.minimumInteritemSpacing = 5
         distantPredictionCollectionView.collectionViewLayout = layout
         
         distantPredictionCollectionView.dataSource = self
@@ -363,7 +363,7 @@ class MainViewController: NSViewController, NSCollectionViewDataSource, NSCollec
     // Data Source
     @available(OSX 10.11, *)
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return 10
     }
     
 }
