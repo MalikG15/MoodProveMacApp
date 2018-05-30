@@ -1806,21 +1806,53 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <scrollView wantsLayer="YES" ambiguous="YES" misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVy-Uw-vfl">
+                                            <rect key="frame" x="20" y="44" width="443" height="708"/>
+                                            <clipView key="contentView" drawsBackground="NO" id="kTI-Bd-MFc">
+                                                <rect key="frame" x="1" y="1" width="441" height="706"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <collectionView id="j8d-36-2aX">
+                                                        <rect key="frame" x="0.0" y="0.0" width="441" height="706"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="7iu-lU-3SZ">
+                                                            <size key="itemSize" width="50" height="50"/>
+                                                        </collectionViewFlowLayout>
+                                                        <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </collectionView>
+                                                </subviews>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </clipView>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="708" id="KU5-fL-Fbs"/>
+                                                <constraint firstAttribute="width" constant="443" id="xwa-sO-Ovj"/>
+                                            </constraints>
+                                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="CyB-WU-iHL">
+                                                <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="EjR-BX-qhR">
+                                                <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                        </scrollView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="mgw-Ff-GWK" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="1Vg-a2-xYN"/>
                                         <constraint firstItem="pUC-UU-e3E" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="20" id="2mD-NQ-ndS"/>
+                                        <constraint firstItem="tQJ-Uv-0Ux" firstAttribute="leading" secondItem="tVy-Uw-vfl" secondAttribute="trailing" constant="5" id="5Vl-P4-ihI"/>
                                         <constraint firstItem="SFa-ya-XtI" firstAttribute="centerX" secondItem="hpn-N3-1zi" secondAttribute="centerX" id="7fG-qn-Qwm"/>
                                         <constraint firstItem="tt4-Ju-mI1" firstAttribute="top" secondItem="2E0-SW-TCj" secondAttribute="bottom" constant="30" id="BNP-ss-rpn"/>
                                         <constraint firstItem="tt4-Ju-mI1" firstAttribute="centerX" secondItem="OUh-Pc-ofe" secondAttribute="centerX" id="EJu-B1-n3f"/>
                                         <constraint firstItem="2E0-SW-TCj" firstAttribute="centerX" secondItem="tt4-Ju-mI1" secondAttribute="centerX" id="NQ9-6C-ygi"/>
                                         <constraint firstItem="3hH-rX-Jc7" firstAttribute="centerX" secondItem="WLd-Q4-KeN" secondAttribute="centerX" id="NlC-hY-odZ"/>
                                         <constraint firstItem="p3u-VY-Gb3" firstAttribute="top" secondItem="Mca-Is-meY" secondAttribute="bottom" constant="32" id="QW1-fd-kQT"/>
+                                        <constraint firstItem="tVy-Uw-vfl" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="25" id="RTM-Xv-kvT"/>
                                         <constraint firstItem="3hH-rX-Jc7" firstAttribute="centerY" secondItem="WLd-Q4-KeN" secondAttribute="centerY" id="TN1-Cy-1g9"/>
                                         <constraint firstItem="SFa-ya-XtI" firstAttribute="centerX" secondItem="uPC-yb-ty2" secondAttribute="centerX" id="UKy-P1-K5H"/>
                                         <constraint firstItem="WLd-Q4-KeN" firstAttribute="top" secondItem="hpn-N3-1zi" secondAttribute="bottom" constant="8" id="VQN-oU-dLf"/>
                                         <constraint firstAttribute="trailing" secondItem="pUC-UU-e3E" secondAttribute="trailing" constant="74" id="a2C-lO-IVn"/>
-                                        <constraint firstAttribute="trailing" secondItem="OUh-Pc-ofe" secondAttribute="trailing" constant="36" id="aIg-92-pR0"/>
+                                        <constraint firstAttribute="trailing" secondItem="OUh-Pc-ofe" secondAttribute="trailing" constant="25" id="aIg-92-pR0"/>
                                         <constraint firstItem="tt4-Ju-mI1" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="237" id="b8h-eV-rO0"/>
                                         <constraint firstItem="3hH-rX-Jc7" firstAttribute="leading" secondItem="uPC-yb-ty2" secondAttribute="leading" constant="700" id="biA-T5-Fih"/>
                                         <constraint firstItem="Mca-Is-meY" firstAttribute="top" secondItem="tt4-Ju-mI1" secondAttribute="bottom" constant="36" id="cQA-mY-TKG"/>
@@ -1832,6 +1864,8 @@
                                         <constraint firstItem="SFa-ya-XtI" firstAttribute="centerX" secondItem="3hH-rX-Jc7" secondAttribute="centerX" id="l3W-fG-TXV"/>
                                         <constraint firstItem="Mca-Is-meY" firstAttribute="centerX" secondItem="tt4-Ju-mI1" secondAttribute="centerX" id="pVs-Sc-8Jt"/>
                                         <constraint firstItem="SFa-ya-XtI" firstAttribute="top" secondItem="WLd-Q4-KeN" secondAttribute="bottom" constant="23" id="qJY-m2-wn2"/>
+                                        <constraint firstItem="tVy-Uw-vfl" firstAttribute="top" secondItem="uPC-yb-ty2" secondAttribute="top" constant="326" id="tJq-sP-QTu"/>
+                                        <constraint firstItem="OUh-Pc-ofe" firstAttribute="leading" secondItem="tQJ-Uv-0Ux" secondAttribute="trailing" constant="5" id="thB-x1-3cF"/>
                                     </constraints>
                                 </view>
                                 <color key="borderColor" red="0.047058824450000002" green="0.91372549530000002" blue="0.3058823645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
