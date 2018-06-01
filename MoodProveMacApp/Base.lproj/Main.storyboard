@@ -1872,9 +1872,9 @@
                         <outlet property="checkInMood" destination="3hH-rX-Jc7" id="mGe-42-T9e"/>
                         <outlet property="descriptionForCheckIn" destination="hpn-N3-1zi" id="tvA-Hk-IZR"/>
                         <outlet property="friendSearchTextField" destination="0Kj-Kk-WBp" id="knq-Ex-qhK"/>
-                        <outlet property="friendStatusCollectionView" destination="tVy-Uw-vfl" id="8w1-gN-fg9"/>
                         <outlet property="mainPieChartView" destination="SFa-ya-XtI" id="Rpb-EX-SgN"/>
                         <outlet property="moodDetailCollectionView" destination="tQJ-Uv-0Ux" id="2Ue-hp-nFW"/>
+                        <outlet property="moodFriendStatusCollectionView" destination="j8d-36-2aX" id="EPZ-iH-SPa"/>
                         <outlet property="moodOverviewCollectionView" destination="p3u-VY-Gb3" id="m6L-9N-S4j"/>
                         <outlet property="moodTimeSelection" destination="Mca-Is-meY" id="Ph2-me-zlS"/>
                         <outlet property="pastOrPredictedMoodToggleButton" destination="tt4-Ju-mI1" id="uqt-jn-OJ1"/>

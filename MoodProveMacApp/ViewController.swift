@@ -43,32 +43,18 @@ class MainViewController: NSViewController, NSCollectionViewDataSource, NSCollec
          }
          titleOnMainView.stringValue = getCheckInTimes()
          descriptionForCheckIn.stringValue = "\(name!)'s Next Check-In with MoodProve is:"
+         
          return
          }*/
         
         // Set up mood overview collection view
-        let layout = NSCollectionViewFlowLayout()
-        layout.itemSize = NSSize(width: 200, height: 100)
-        layout.sectionInset = EdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-        layout.minimumLineSpacing = 20
-        layout.minimumInteritemSpacing = 20
-        moodOverviewCollectionView.collectionViewLayout = layout
-        
-        moodOverviewCollectionView.dataSource = self
-        moodOverviewCollectionView.delegate = self
-        
-        
-        // ----------------------------------------------
-        
+        moodOverviewCollectionViewLayoutConfiguration()
         
         // Set up mood detail collection view
-        moodDetailCollectionView.collectionViewLayout = layout
+        moodDetailCollectionViewLayoutConfiguration()
         
-        moodDetailCollectionView.dataSource = self
-        moodDetailCollectionView.delegate = self
-        
-        
-        // ----------------------------------------------
+        // Set up mood friend status collection view
+        moodFriendStatusCollectionViewLayoutConfiguration()
         
         checkInMood.isHidden = true
         descriptionForCheckIn.isHidden = true
@@ -96,6 +82,18 @@ class MainViewController: NSViewController, NSCollectionViewDataSource, NSCollec
         else {
             moodTimeSelection.isHidden = true
         }
+    }
+    
+    func moodOverviewCollectionViewLayoutConfiguration() {
+        let layout = NSCollectionViewFlowLayout()
+        layout.itemSize = NSSize(width: 200, height: 100)
+        layout.sectionInset = EdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+        layout.minimumLineSpacing = 20
+        layout.minimumInteritemSpacing = 20
+        moodOverviewCollectionView.collectionViewLayout = layout
+        
+        moodOverviewCollectionView.dataSource = self
+        moodOverviewCollectionView.delegate = self
     }
     
     // MARK: - Mood Detail
@@ -137,12 +135,37 @@ class MainViewController: NSViewController, NSCollectionViewDataSource, NSCollec
         mainPieChartView.chartDescription?.text = ""
     }
     
+    func moodDetailCollectionViewLayoutConfiguration() {
+        let layout = NSCollectionViewFlowLayout()
+        layout.itemSize = NSSize(width: 200, height: 100)
+        layout.sectionInset = EdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+        layout.minimumLineSpacing = 20
+        layout.minimumInteritemSpacing = 20
+        moodDetailCollectionView.collectionViewLayout = layout
+        
+        moodDetailCollectionView.dataSource = self
+        moodDetailCollectionView.delegate = self
+    }
+    
 
     // MARK: - Friend Search
     
-    @IBOutlet weak var friendStatusCollectionView: NSScrollView!
+    @IBOutlet weak var moodFriendStatusCollectionView: NSCollectionView!
     
     @IBOutlet weak var friendSearchTextField: NSTextField!
+    
+    func moodFriendStatusCollectionViewLayoutConfiguration() {
+        let layout = NSCollectionViewFlowLayout()
+        layout.itemSize = NSSize(width: 200, height: 100)
+        layout.sectionInset = EdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+        layout.minimumLineSpacing = 20
+        layout.minimumInteritemSpacing = 20
+        moodFriendStatusCollectionView.collectionViewLayout = layout
+        
+        moodFriendStatusCollectionView.dataSource = self
+        moodFriendStatusCollectionView.delegate = self
+
+    }
     
     // MARK: - Check In
     
@@ -214,7 +237,7 @@ class MainViewController: NSViewController, NSCollectionViewDataSource, NSCollec
             return detailItem
         }
         else {
-            let overviewItem = collectionView.makeItem(withIdentifier: "MoodOverviewCollectionViewItem", for: indexPath)
+            let overviewItem = collectionView.makeItem(withIdentifier: "MoodFriendStatusCollectionViewItem", for: indexPath)
             return overviewItem
         }
 
